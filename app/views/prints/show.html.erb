@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @print.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @print.description %>
+</p>
+
+<p>
+  <strong>Pledge:</strong>
+  <%= @print.pledge %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @print.rating %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @print.category %>
+</p>
+
+<%= link_to 'Edit', edit_print_path(@print) %> |
+<%= link_to 'Back', prints_path %>
