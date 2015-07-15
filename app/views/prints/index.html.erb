@@ -18,7 +18,7 @@
     <% @prints.each do |print| %>
       <tr>
         <td><%= print.name %></td>
-        <td><%= @print.image %></td>
+        <td><%= image_tag print.image.url(:medium) %></td>
         <td><%= print.description %></td>
         <td><%= print.pledge %></td>
         <td><%= print.rating %></td>
