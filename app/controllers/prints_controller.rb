@@ -15,7 +15,7 @@ class PrintsController < ApplicationController
 
   # GET /prints/new
   def new
-    @print = current_user.posts.build
+    @print = current_user.prints.build
   end
 
   # GET /prints/1/edit
@@ -25,7 +25,7 @@ class PrintsController < ApplicationController
   # POST /prints
   # POST /prints.json
   def create
-    @print = current_user.post.build(print_params)
+    @print = current_user.prints.build(print_params)
 
     respond_to do |format|
       if @print.save
@@ -69,6 +69,6 @@ class PrintsController < ApplicationController
     end
 
     def print_params
-      params.require(:print).permit(:name, :description, :pledge, :rating, :category)
+      params.require(:print).permit(:name, :description, :pledge, :rating, :category, :image)
     end
 end
