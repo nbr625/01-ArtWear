@@ -62,12 +62,11 @@ class PrintsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_print
       @print = Print.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def print_params
       params.require(:print).permit(:name, :description, :pledge, :rating, :category)
     end
