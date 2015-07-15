@@ -1,5 +1,6 @@
 class PrintsController < ApplicationController
   before_action :set_print, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /prints
   # GET /prints.json
@@ -14,7 +15,7 @@ class PrintsController < ApplicationController
 
   # GET /prints/new
   def new
-    @print = Print.new
+    @print = current_user.posts.build
   end
 
   # GET /prints/1/edit
@@ -24,7 +25,7 @@ class PrintsController < ApplicationController
   # POST /prints
   # POST /prints.json
   def create
-    @print = Print.new(print_params)
+    @print = current_user.post.build(print_params)
 
     respond_to do |format|
       if @print.save
@@ -66,7 +67,7 @@ class PrintsController < ApplicationController
     def set_print
       @print = Print.find(params[:id])
     end
-    
+
     def print_params
       params.require(:print).permit(:name, :description, :pledge, :rating, :category)
     end

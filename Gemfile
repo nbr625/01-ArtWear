@@ -24,7 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Gem used for user authorization
 gem 'devise', '~> 3.5.1'
-
+#Upload Pictures, used for Print image, User avatar, and Product image
+gem 'paperclip', '~> 4.3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

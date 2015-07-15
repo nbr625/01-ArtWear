@@ -23,8 +23,10 @@
         <td><%= print.rating %></td>
         <td><%= print.category %></td>
         <td><%= link_to 'Show', print %></td>
-        <td><%= link_to 'Edit', edit_print_path(print) %></td>
-        <td><%= link_to 'Destroy', print, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if print.user == current_user %>
+          <td><%= link_to 'Edit', edit_print_path(print) %></td>
+          <td><%= link_to 'Destroy', print, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
