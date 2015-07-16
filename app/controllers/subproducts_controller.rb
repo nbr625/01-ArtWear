@@ -1,16 +1,16 @@
 class SubproductsController < ApplicationController
   before_action :set_subproduct, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_product
 
   def new
-    @subproduct = Subproduct.new
+    @subproduct = @product.subproduct.build
   end
 
   def edit
   end
 
   def create
-    @subproduct = Subproduct.new(subproduct_params)
+    @subproduct = @product.subproduct.build(subproduct_params)
 
     respond_to do |format|
       if @subproduct.save
@@ -44,9 +44,12 @@ class SubproductsController < ApplicationController
   end
 
   private
+    def set_product
+      @product = Product.find(params[:id])
+    end
   
     def set_subproduct
-      @subproduct = Subproduct.find(params[:id])
+      @subproduct = Subproduct.find(params[:product_id])
     end
     
     def subproduct_params

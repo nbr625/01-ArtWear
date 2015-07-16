@@ -3,7 +3,6 @@ class PrintsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
 
-
   def index
     @prints = Print.all
   end

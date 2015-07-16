@@ -2,11 +2,14 @@
 <h1>Latest Prints</h1>
 
 <ul class="slider5" id="menu">
-  <%@action_movies.each do |movie|%>
+  <%@products.each do |movie|%>
     <li class="sub">
       <div class="thumbnail">
         <%= link_to (image_tag product.image.url(:medium), class: 'image'), movie %>
       </div>
     </li>
   <% end %>
- </ul>
+</ul>
+
+
+<h2>Latest Artist</h2>

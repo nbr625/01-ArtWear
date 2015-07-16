@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   resources :subproducts
-
   resources :reviews
 
   resources :products
 
   devise_for :users
   resources :prints
-  root to: "prints#index"
+  root to: "welcome#index"
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
