@@ -2,17 +2,13 @@ class SubproductsController < ApplicationController
   before_action :set_subproduct, only: [:show, :edit, :update, :destroy]
   
 
-  # GET /subproducts/new
   def new
     @subproduct = Subproduct.new
   end
 
-  # GET /subproducts/1/edit
   def edit
   end
 
-  # POST /subproducts
-  # POST /subproducts.json
   def create
     @subproduct = Subproduct.new(subproduct_params)
 
@@ -27,8 +23,6 @@ class SubproductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /subproducts/1
-  # PATCH/PUT /subproducts/1.json
   def update
     respond_to do |format|
       if @subproduct.update(subproduct_params)
@@ -41,8 +35,6 @@ class SubproductsController < ApplicationController
     end
   end
 
-  # DELETE /subproducts/1
-  # DELETE /subproducts/1.json
   def destroy
     @subproduct.destroy
     respond_to do |format|
@@ -52,12 +44,11 @@ class SubproductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  
     def set_subproduct
       @subproduct = Subproduct.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def subproduct_params
       params.require(:subproduct).permit(:price, :quantity, :size)
     end

@@ -2,28 +2,27 @@ class PrintsController < ApplicationController
   before_action :set_print, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /prints
-  # GET /prints.json
+
+
   def index
     @prints = Print.all
   end
 
-  # GET /prints/1
-  # GET /prints/1.json
+
+
   def show
   end
 
-  # GET /prints/new
+
   def new
     @print = current_user.prints.build
   end
 
-  # GET /prints/1/edit
+  
   def edit
   end
 
-  # POST /prints
-  # POST /prints.json
+
   def create
     @print = current_user.prints.build(print_params)
 
@@ -38,8 +37,6 @@ class PrintsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /prints/1
-  # PATCH/PUT /prints/1.json
   def update
     respond_to do |format|
       if @print.update(print_params)
@@ -52,8 +49,6 @@ class PrintsController < ApplicationController
     end
   end
 
-  # DELETE /prints/1
-  # DELETE /prints/1.json
   def destroy
     @print.destroy
     respond_to do |format|
