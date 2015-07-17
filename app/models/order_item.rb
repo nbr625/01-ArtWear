@@ -8,6 +8,8 @@ class OrderItem < ActiveRecord::Base
 
   before_save :finalize
 
+
+  # Will use the associated subproduct's price if the order item is not persisted
   def unit_price
     if persisted?
       self[:unit_price]
@@ -22,7 +24,7 @@ class OrderItem < ActiveRecord::Base
 
 private
   def subproduct_present
-    if product.nil?
+    if subproduct.nil?
       errors.add(:subproduct, "is not valid or is not active.")
     end
   end

@@ -9,7 +9,7 @@
 </p>
 <p>
   <strong>Artist:</strong>
-  <%= @product.artist %>
+  <%= @product.creator %>
 </p>
 
 
@@ -17,6 +17,15 @@
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
+
+<ul>
+  <% @product.subproducts.each do |sprod| %>
+  	<li>Size<%= sprod.size %></li>
+  	<li>Quantity<%= sprod.quantity %></li>
+  	<li><strong>Price<%= sprod.price %></strong></li>
+  	<br/>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
