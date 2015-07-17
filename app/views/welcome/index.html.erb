@@ -4,10 +4,10 @@
   	<br/><br/>
     <h1 style="text-align:center;">Latest Prints</h1>
     <ul class="slider5" id="menu">
-      <%@products.each do |movie|%>
+      <%@products.each do |product|%>
         <li class="sub">
           <div class="thumbnail">
-            <%= link_to (image_tag product.image.url(:medium), class: 'image'), movie %>
+            <%= link_to (image_tag product.image.url(:medium), class: 'image'), product %>
           </div>
         </li>
       <% end %>
