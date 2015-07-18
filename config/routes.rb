@@ -10,13 +10,14 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
 
-  resources :subproducts
-  resources :reviews
-
-  resources :products
+  resources :products do
+    resources :subproducts
+  end
 
   devise_for :users
-  resources :prints
+  resources :prints do
+    resources :reviews
+  end
   root to: "welcome#index"
   resources :users
 

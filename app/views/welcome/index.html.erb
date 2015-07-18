@@ -1,7 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-body">
-  	<div class="row-fluid" style="text-align:center;"><%= image_tag('splat_banner.jpg')%></div>
-  	<br/><br/>
+  	
+    <div class="row">
+      <div class="col-md-6" style="text-align:center;"><%= link_to image_tag('shop_button.jpg'), products_path %></div>
+      <div class="col-md-6" style="text-align:center;"><%= link_to image_tag('review_button.jpg'), prints_path %></div>
+    </div>
+    <br/><br/>
     <h1 style="text-align:center;">Latest Prints</h1>
     <ul class="slider5" id="menu">
       <%@products.each do |product|%>
@@ -13,15 +17,18 @@
       <% end %>
     </ul>
     <br/><br/>
-    <div class="row">
-  		<div class="col-md-6" style="text-align:center;"><%= image_tag('shop_button.jpg')%></div>
-  		<div class="col-md-6" style="text-align:center;"><%= image_tag('review_button.jpg')%></div>
-	</div>
-	<br/><br/>
+    
     <h1 style="text-align:center;">Artist of the Month</h2>
     <h4 style="text-align:center;">Claudia A. Riveros</h4>
     <p>Raised in an Island off of Venezuela claudia was inspired the coexisting contrast between the calm beach culture and the rigorous karate lifestyle that was intrinsic to her familial unity. One can feel the disciplied sprezzature in her work.</p>
     <div class="row-fluid" style="text-align:center;"><%= image_tag('footer_banner.jpg')%></div>
   </div>
 </div>
-
+<script>
+  $('.slider5').bxSlider({
+    minSlides: 3,
+    maxSlides: 6,
+    slideWidth: 200,
+    infiniteLoop: true
+  });
+</script>

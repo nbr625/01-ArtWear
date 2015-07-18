@@ -1,20 +1,16 @@
 class SubproductsController < ApplicationController
-  before_action :set_subproduct, only: [:show, :edit, :update, :destroy]
+  before_action :set_subproduct, except: [:create]
   before_action :set_product
 
-  def new
-    @subproduct = @product.subproduct.build
-  end
 
-  def edit
-  end
+
 
   def create
-    @subproduct = @product.subproduct.build(subproduct_params)
+    @subproduct = @product.subproducts.create(subproduct_params)
 
     respond_to do |format|
       if @subproduct.save
-        format.html { redirect_to @subproduct, notice: 'Subproduct was successfully created.' }
+        format.html { redirect_to product_path(@product), notice: 'Subproduct was successfully created.' }
         format.json { render :show, status: :created, location: @subproduct }
       else
         format.html { render :new }
@@ -45,11 +41,11 @@ class SubproductsController < ApplicationController
 
   private
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.find(params[:product_id])
     end
   
     def set_subproduct
-      @subproduct = Subproduct.find(params[:product_id])
+      @subproduct = @product.subproducts.find(params[:id])
     end
     
     def subproduct_params

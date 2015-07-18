@@ -20,20 +20,17 @@
   
   <%= csrf_meta_tags %>
 </head>
-</head>
 <body>
 	<div class="row">
-      <div class="col-xs-6">
-        <h1><%= link_to "Shop", products_path %></h1>
-      </div>
-      <div class="col-xs-6 text-right">
-        <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
-      </div>
+    <div class="col-xs-6 text-right">
+      <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
     </div>
+  </div>
+  <div class="row-fluid" style="text-align:center;"><%= link_to image_tag('splat_banner.jpg'), root_path %></div>
 	<div class="container">
 		<%= yield %>
 		<p class="notice"><%= notice %></p>
-    	<p class="alert"><%= alert %></p>
-    </div>
+    <p class="alert"><%= alert %></p>
+  </div>
 </body>
 </html>
