@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :prints do
-    resources :reviews
+    resources :reviews, except: :show
   end
   root to: "welcome#index"
   resources :users
