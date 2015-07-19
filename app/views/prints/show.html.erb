@@ -45,8 +45,8 @@
       <p><%= review.comment %></p>
     </div>
     <% if current_user == @user %>
-      <div class="review_button"><%= link_to "Change", edit_polymorphic_path([@movie ,review]), class: "btn btn-info" %></div>
-      <div class="review_button"><%= link_to 'Erase It', [@movie, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></div>
+      <div class="review_button"><%= link_to "Change", edit_polymorphic_path([@print ,review]), class: "btn btn-info" %></div>
+      <div class="review_button"><%= link_to 'Erase It', [@print, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></div>
               <% end %>
       </div>
     <% end %>
@@ -61,14 +61,3 @@
 <%= link_to 'Edit', edit_print_path(@print) %> |
 <%= link_to 'Back', prints_path %>
 
-<script>
-  $('.star-rating').raty({
-    path: '/assets/',
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    }
-
-  });
-
-</script>

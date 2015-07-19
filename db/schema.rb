@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717214023) do
+ActiveRecord::Schema.define(version: 20150719044505) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "subproduct_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20150717214023) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -109,6 +110,8 @@ ActiveRecord::Schema.define(version: 20150717214023) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "admin",                  default: false
+    t.string   "username"
+    t.text     "biography"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
