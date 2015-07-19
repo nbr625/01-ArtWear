@@ -2,37 +2,14 @@
 
 <h1>Listing Prints</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Pledge</th>
-      <th>Rating</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @prints.each do |print| %>
-      <tr>
-        <td><%= print.name %></td>
-        <td><%= image_tag print.image.url(:medium) %></td>
-        <td><%= print.description %></td>
-        <td><%= print.pledge %></td>
-        <td><%= print.rating %></td>
-        <td><%= print.category %></td>
-        <td><%= link_to 'Show', print %></td>
-        <% if print.user == current_user %>
-          <td><%= link_to 'Edit', edit_print_path(print) %></td>
-          <td><%= link_to 'Destroy', print, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<% @prints.each do |print| %>
 
-<%= link_to 'New Print', new_print_path %>
+  
+  <p><%= link_to (image_tag print.image.url(:medium)), print_path(print) %></p>
+  <p><%= print.name %></p>
+
+<% end %>
+
+<%= link_to 'Post a Print', new_print_path %>

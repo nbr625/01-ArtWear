@@ -1,11 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @print.name %>
+
+<p style="text-align: center;">
+  <%= image_tag @print.image.url(:large) %>
+</p>
+<p style="text-align: center;">
+  <strong><%= @print.name %></strong>
 </p>
 <p>
-  <%= image_tag @print.image.url(:medium) %>
+<p style="text-align: center;">
+  <%= @print.user.email %>
+</p>
 <p>
   <strong>Description:</strong>
   <%= @print.description %>
@@ -26,5 +31,44 @@
   <%= @print.category %>
 </p>
 
+<%= link_to "Write a Review", new_print_review_path(@print), class: "btn btn-danger" %>
+
+<% if @reviews.blank? %>
+  <h3>No reviews just yet, would you like to add the first?</h3>
+<% else %>
+  <% @reviews.sort_by{|t| - t.created_at.to_i}.first(8).each do |review| %>
+  <% @user = User.find(review.user_id)%>
+  <div class="row">
+    <div class="review_avatar"><%= link_to (image_tag @user.avatar.url(:thumb)), @user %></div>
+    <div class="reviews review_rating">
+      <div class="star-rating" data-score= <%= review.rating %> ></div>
+      <p><%= review.comment %></p>
+    </div>
+    <% if current_user == @user %>
+      <div class="review_button"><%= link_to "Change", edit_polymorphic_path([@movie ,review]), class: "btn btn-info" %></div>
+      <div class="review_button"><%= link_to 'Erase It', [@movie, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></div>
+              <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  <div style="text-align:center;">
+          <%= link_to "All Reviews", print_reviews_path(@print), class: "btn btn-default"%>
+  </div>
+</div>
+
+<%= link_to "Edit Print", edit_print_path(@print), class: "btn btn-default" %>
+
 <%= link_to 'Edit', edit_print_path(@print) %> |
 <%= link_to 'Back', prints_path %>
+
+<script>
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+
+  });
+
+</script>
