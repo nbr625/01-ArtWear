@@ -10,7 +10,11 @@
         </p>
         <p><strong>Description:</strong>
           <%= @print.description %></p>
+        <div class="star-rating" data-score= <%= @avg_review %> ></div>
+        <em><%= "#{@reviews.length} reviews" %></em>
       </div>
+
+      <br/>
 
       <%= link_to "Write a Review", new_print_review_path(@print), class: "btn btn-danger" %>
       <br/><br/>

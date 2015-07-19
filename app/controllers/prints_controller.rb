@@ -11,7 +11,11 @@ class PrintsController < ApplicationController
 
   def show
     @reviews = Review.where(print_id: @print.id).order("created_at DESC")
-  
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rating).round(2)
+    end 
   end
 
 
