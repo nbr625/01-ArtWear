@@ -9,4 +9,6 @@ class UsersController < ApplicationController
         format.xml { render :xml => @user }
     end
   end
+
+  scope :admin_user, -> {where(admin: true)}
 end

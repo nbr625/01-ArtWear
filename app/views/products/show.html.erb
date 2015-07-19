@@ -25,7 +25,9 @@
   <%= render "subproduct_row", subproduct: subproduct, order_item: @order_item %>
 <% end %>
 
-<%= render "subproducts/form"%>
+<% if current_user.admin? %>
+  <%= render "subproducts/form"%>
+<% end %>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

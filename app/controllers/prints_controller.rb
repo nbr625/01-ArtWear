@@ -1,10 +1,11 @@
 class PrintsController < ApplicationController
   before_action :set_print, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  
 
 
   def index
     @prints = Print.all
+    @user = current_user
   end
 
 
