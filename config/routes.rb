@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'admin/main'
+
   get 'order_items/create'
 
   get 'order_items/update'
@@ -15,11 +17,16 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  resources :users
+
+  get 'users/admin', to: 'users#admin'
+
   resources :prints do
     resources :reviews, except: :show
   end
+
   root to: "welcome#index"
-  resources :users
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

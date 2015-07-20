@@ -2,7 +2,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-7 col-md-offset-1">
-        <h1 class="review_title purple"><%= link_to @print.title, @print %></h1>
+        <h1><%= link_to @print.name, @print %></h1>
         <% if @reviews.blank? %>
           <h3>No reviews just yet, would you like to add the first?</h3>
         <% else %>
@@ -14,6 +14,9 @@
                 <div class="star-rating" data-score= <%= review.rating %> ></div>
                 <p><%= review.comment %></p>
               </div>
+              <% if review.pledge == true %>
+                <%= image_tag('heart_icon.jpg') %>
+              <% end %>
               <% if current_user.id == @user.id %>
                 <div><%= link_to "Change", edit_polymorphic_path([@print ,review]), class: "btn btn-default" %></div>
                 <div><%= link_to 'Erase It', [@print, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></div>

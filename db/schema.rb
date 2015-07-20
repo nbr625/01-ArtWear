@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719044505) do
+ActiveRecord::Schema.define(version: 20150720090957) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "subproduct_id"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20150719044505) do
     t.integer  "user_id"
     t.integer  "print_id"
     t.integer  "product_id"
+    t.boolean  "pledge"
   end
 
   create_table "subproducts", force: :cascade do |t|

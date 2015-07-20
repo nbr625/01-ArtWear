@@ -28,6 +28,19 @@ class PrintsController < ApplicationController
   def edit
   end
 
+  def make_product
+    @product = Product.new(image: @print.image, name: @print.name, creator: @print.creator, description: @print.description, user_id: @print.user_id)
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.json { render :show, status: :created, location: @print }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   def create
     @print = current_user.prints.build(print_params)

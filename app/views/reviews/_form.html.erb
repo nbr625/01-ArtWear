@@ -14,10 +14,17 @@
   <div class="field">
     <div id="star-rating"></div>
   </div>
+
   <br/>
   <div class="field">
     <%= f.text_area :comment, hide_label: true, placeholder: "Critique" %>
   </div>
+
+  <div class="field">
+    <%= f.label :pledge %> <br/>
+    <%= f.check_box :pledge %> <br/>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

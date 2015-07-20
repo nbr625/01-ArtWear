@@ -47,6 +47,8 @@
   </div>
 </div>
 
+<div> <%=link_to "Make into a product", method: :create_product %></div>
+
 <% if current_user.admin? || current_user == @print.user %>
   <%= link_to "Edit Print", edit_print_path(@print), class: "btn btn-default" %>
   <div class="review_button"><%= link_to 'Erase It', @print, method: :delete, class: "btn btn-default" %>

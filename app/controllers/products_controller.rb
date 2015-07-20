@@ -34,6 +34,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def make_product
+    @product = Product.create(image: @print.image, name: @print.name, creator: @print.creator, description: @print.description, user_id: @print.user_id)
+  end
+
   def update
     respond_to do |format|
       if @product.update(product_params)
