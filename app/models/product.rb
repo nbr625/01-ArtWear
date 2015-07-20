@@ -10,7 +10,5 @@ class Product < ActiveRecord::Base
   		where('created_at > ?', Time.now-30.days.ago).order("created_at desc").first(10)
 	end
 
-	def make_product
-		@product = Product.create(image: @print.image, name: @print.name, creator: @print.creator, description: @print.description, user_id: @print.user_id)
-	end
+	
 end

@@ -15,7 +15,7 @@
                 <p><%= review.comment %></p>
               </div>
               <% if review.pledge == true %>
-                <%= image_tag('heart_icon.jpg') %>
+                <%= image_tag('heart_icon.jpg', width: 100, height: 100) %>
               <% end %>
               <% if current_user.id == @user.id %>
                 <div><%= link_to "Change", edit_polymorphic_path([@print ,review]), class: "btn btn-default" %></div>

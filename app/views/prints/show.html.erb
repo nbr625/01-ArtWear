@@ -12,6 +12,7 @@
           <%= @print.description %></p>
         <div class="star-rating" data-score= <%= @avg_review %> ></div>
         <em><%= "#{@reviews.length} reviews" %></em>
+        <p><%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "\'s thus far: #{@reviews.where(pledge: true).length}" %><p/>
       </div>
 
       <br/>
@@ -32,6 +33,9 @@
                 <div class="star-rating" data-score= <%= review.rating %> ></div>
                 <p><%= review.comment %></p>
               </div>
+              <% if review.pledge == true %>
+                <%= image_tag('heart_icon.jpg', width: 100, height: 100) %>
+              <% end %>
               <% if current_user == @user %>
                 <div class="review_button"><%= link_to "Change", edit_polymorphic_path([@print ,review]), class: "btn btn-info" %></div>
                 <div class="review_button"><%= link_to 'Erase It', [@print, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></div>
