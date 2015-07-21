@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @subproducts = Subproduct.all
     @order_item = current_order.order_items.new
   end
 
@@ -65,6 +66,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :artist, :description, :image, :user_id)
+      params.require(:product).permit(:name, :artist, :description, :image, :user_id, :subproduct)
     end
 end

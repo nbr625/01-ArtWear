@@ -18,15 +18,12 @@
 </p>
 
 <% @product.subproducts.each do |subproduct| %>
-  <% if current_user.admin? %>
-    <%= link_to "Edit", edit_product_subproduct_path(@product, subproduct) %>
-  <% end %>
   <%= render "subproduct_row", subproduct: subproduct, order_item: @order_item %>
 <% end %>
 
 <% if current_user.admin? %>
   <%= render "subproducts/form"%>
+  <%= link_to 'Edit', edit_product_path(@product) %>
 <% end %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back to Shop', products_path %>
