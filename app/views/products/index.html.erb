@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Products</h1>
+<% if current_user.admin? %>
+	<%= link_to 'Add New Product', new_product_path %>
+<% end %>
 
 <table>
   <tbody>
@@ -8,11 +11,9 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= link_to (image_tag product.image.url(:medium)), product_path(product) %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-<% if current_user.admin? %>
-	<%= link_to 'New Product', new_product_path %>
-<% end %>
+<br/>
+<%= link_to 'Under Review', new_product_path %>

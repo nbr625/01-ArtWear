@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
+
+  root to: "welcome#index"
+
   get 'admin/main'
+  get 'admin/best_rated'
+  get 'admin/flagged_comments'
+  get 'admin/flagged_prints'
+  get 'admin/out_of_stock'
 
+  resources :order_items, only: [:create, :update, :destroy]
   get 'order_items/create'
-
   get 'order_items/update'
-
   get 'order_items/destroy'
 
-  get 'carts/show'
-
   resource :cart, only: [:show]
-  resources :order_items, only: [:create, :update, :destroy]
-
+  get 'carts/show'
+  
+  
   resources :products do
     resources :subproducts
   end
@@ -19,16 +24,18 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  get 'users/admin', to: 'users#admin'
-
   resources :prints do
     member do
       put 'flag'
     end
-    resources :reviews, except: :show
+    resources :reviews, except: :show do
+      member do
+        put 'flag'
+      end
+    end
   end
 
-  root to: "welcome#index"
+  
   
 
   # The priority is based upon order of creation: first created -> highest priority.

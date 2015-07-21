@@ -3,7 +3,6 @@ class Product < ActiveRecord::Base
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 	belongs_to :user
 	has_many :reviews, dependent: :destroy
-	has_many :products
 	has_many :subproducts, dependent: :destroy
 
 	def self.recent

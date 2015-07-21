@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:show, :edit, :update, :destroy, :flag]
   before_action :set_print
   before_action :authenticate_user!
   
@@ -23,6 +23,19 @@ class ReviewsController < ApplicationController
       redirect_to @print
     else
       render 'new'
+    end
+  end
+
+  def flag
+    @review.flag_review
+    respond_to do |format|
+      if @print.save
+        format.html { redirect_to @print, notice: 'Print was successfully created.' }
+        format.json { render :show, status: :created, location: @print }
+      else
+        format.html { render :new }
+        format.json { render json: @print.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -54,6 +67,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:rating, :comment, :pledge)
+      params.require(:review).permit(:rating, :comment, :pledge, :flag_count)
     end
 end

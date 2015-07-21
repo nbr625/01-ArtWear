@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721033003) do
+ActiveRecord::Schema.define(version: 20150721111210) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "subproduct_id"
@@ -77,22 +77,24 @@ ActiveRecord::Schema.define(version: 20150721033003) do
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
     t.integer  "print_id"
     t.integer  "product_id"
     t.boolean  "pledge"
+    t.integer  "flag_count", default: 0
   end
 
   create_table "subproducts", force: :cascade do |t|
-    t.integer  "price"
     t.integer  "quantity"
     t.string   "size"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "product_id"
     t.boolean  "active"
+    t.string   "name"
+    t.decimal  "price",      precision: 12, scale: 3
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,7 +2,11 @@
 
   <div class="row">
     <div class="col-xs-8">
-      <h4><%= subproduct.size %></small></h4>
+      <h4><%= "#{subproduct.name} #{subproduct.size}" %></small></h4>
+      <h4><%= "Quantity: #{subproduct.quantity}" %></h4>
+      <% if current_user.admin? %>
+        <h4><%= link_to "Edit", edit_product_subproduct_path(@product, subproduct), class: "btn btn-default"%></h4>
+      <% end %>
     </div>
     <div class="col-xs-4">
       

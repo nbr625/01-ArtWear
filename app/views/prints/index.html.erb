@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Prints</h1>
+<h1><%= link_to "Post a Print", new_print_path, class: "btn btn-danger" %></h1>
 
+<%= link_to "Go to the Shop", products_path %>
 
+<br/>
 
 <% @prints.each do |print| %>
 
@@ -12,4 +14,4 @@
 
 <% end %>
 
-<%= link_to 'Post a Print', new_print_path %>
+

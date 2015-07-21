@@ -19,6 +19,9 @@ class SubproductsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     respond_to do |format|
       if @subproduct.update(subproduct_params)
@@ -45,10 +48,10 @@ class SubproductsController < ApplicationController
     end
   
     def set_subproduct
-      @subproduct = @product.subproducts.find(params[:id])
+      @subproduct = Subproduct.find(params[:id])
     end
     
     def subproduct_params
-      params.require(:subproduct).permit(:price, :quantity, :size)
+      params.require(:subproduct).permit(:price, :quantity, :size, :name)
     end
 end

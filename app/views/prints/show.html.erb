@@ -2,6 +2,7 @@
   <div class="panel-body">
     <div class="row">
       <div>
+        <%= link_to 'Back to All Under Review', prints_path %>
         <p style="text-align: center;">
           <%= image_tag @print.image.url(:large) %>
         </p>
@@ -33,7 +34,10 @@
               <div class="reviews review_rating">
                 <div class="star-rating" data-score= <%= review.rating %> ></div>
                 <p><%= review.comment %></p>
+                
               </div>
+              <p><%= "Flags: #{review.flag_count}" %></p>
+              
               <% if review.pledge == true %>
                 <%= image_tag('heart_icon.jpg', width: 100, height: 100) %>
               <% end %>
@@ -41,7 +45,8 @@
                 <div class="review_button"><%= link_to "Change", edit_polymorphic_path([@print ,review]), class: "btn btn-info" %></div>
                 <div class="review_button"><%= link_to 'Erase It', [@print, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></div>
               <% end %>
-            </div>
+              <div><%= link_to "Flag comment", flag_print_review_path(@print, review), method: :put %></div>
+            </div> 
           <% end %>
         <% end %>
         <div style="text-align:center;">
