@@ -13,6 +13,7 @@
         <div class="star-rating" data-score= <%= @print.average_review %> ></div>
         <em><%= "#{@reviews.length} reviews" %></em>
         <p><%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "\'s thus far: #{@reviews.where(pledge: true).length}" %><p/>
+        <p><%= "flags: #{@print.flag_count}"%></p>
       </div>
 
       <br/>
@@ -50,6 +51,8 @@
     </div>
   </div>
 </div>
+
+<div><%= link_to "Flag Print", flag_print_path(@print), method: :put %></div>
 
 <div> <%=link_to "Make into a product", method: :create_product %></div>
 

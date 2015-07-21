@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get 'users/admin', to: 'users#admin'
 
   resources :prints do
+    member do
+      put 'flag'
+    end
     resources :reviews, except: :show
   end
 

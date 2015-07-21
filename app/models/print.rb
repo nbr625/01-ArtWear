@@ -15,6 +15,11 @@ class Print < ActiveRecord::Base
 		end
 	end
 
+	def flag_print
+		self[:flag_count] += 1
+	end
+
+
 private
 	
 	def update_average_review

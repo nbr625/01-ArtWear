@@ -10,5 +10,14 @@ class Product < ActiveRecord::Base
   		where('created_at > ?', Time.now-30.days.ago).order("created_at desc").first(10)
 	end
 
-	
+	def user_id
+		user = User.find(name: :creator)
+		return user.id
+	end
+
+private
+	def update_user_id
+		self[:user_id] = user_id
+	end	
+
 end

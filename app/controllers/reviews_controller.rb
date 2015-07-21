@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   before_action :set_print
   before_action :authenticate_user!
   
-
   def new
     @review = current_user.reviews.build
   end

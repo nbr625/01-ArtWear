@@ -4,6 +4,7 @@
 	<tr><strong>Best Rated Prints</strong></tr>
 	<% @prints.sort_by(&:average_review).reverse.first(10).each do |print| %>	
 	<tr>
+		<td><%= link_to image_tag print.image.url(:thumb) %></td>
 		<td><%= link_to print.name, print_path(print) %>
 		<td><%= print.average_review %></td>
 		<td><%= link_to print.user.username, user_path(print.user) %></td>
@@ -18,6 +19,7 @@
 			<td><%= link_to image_tag subproduct.product.image.url(:thumb) %></td>
 			<td><%= link_to subproduct.size, product_path(subproduct.product) %></td>
 			<td> <%=link_to subproduct.product.name, product_path(subproduct.product) %> </td>
+			<td><%= link_to subproduct.product.user.username, user_path(subproduct.product.user)%></td>
 		<% end %>
 	<% end %>
 	<% if @subproducts.where(quantity: 0).length == 0 %>

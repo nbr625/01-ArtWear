@@ -1,5 +1,5 @@
 class PrintsController < ApplicationController
-  before_action :set_print, only: [:show, :edit, :update, :destroy]
+  before_action :set_print, only: [:show, :edit, :update, :destroy, :flag]
   
 
 
@@ -51,6 +51,19 @@ class PrintsController < ApplicationController
     end
   end
 
+  def flag
+    @print.flag_print
+    respond_to do |format|
+      if @print.save
+        format.html { redirect_to @print, notice: 'Print was successfully created.' }
+        format.json { render :show, status: :created, location: @print }
+      else
+        format.html { render :new }
+        format.json { render json: @print.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def update
     respond_to do |format|
       if @print.update(print_params)
@@ -78,6 +91,6 @@ class PrintsController < ApplicationController
     end
 
     def print_params
-      params.require(:print).permit(:name, :description, :pledge, :rating, :category, :image, :average_review)
+      params.require(:print).permit(:name, :description, :pledge, :rating, :category, :image, :average_review, :flag_count)
     end
 end
