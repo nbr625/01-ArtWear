@@ -1,12 +1,14 @@
 <h1>Admin#main</h1>
 <p>Find me in app/views/admin/main.html.erb</p>
 
-<table style="float: left;">
-	<% @prints.each do |print| %>
-		<%= print.average_review %>
-	<% end %>
+<table class="table table-hover" style="float: left;">
+	<tr>Best Rated Prints</tr>
+	<% @prints.sort_by(&:average_review).reverse.first(10).each do |print| %>	
 	<tr>
-		
-		<td> </td>
+		<td><%= link_to print.name, print_path(print) %>
+		<td><%= print.average_review %></td>
+		<td><%= link_to print.user.username, user_path(print.user) %></td>
+	<% end %>
 	</tr>
 </table>
+
