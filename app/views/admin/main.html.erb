@@ -1,2 +1,12 @@
 <h1>Admin#main</h1>
 <p>Find me in app/views/admin/main.html.erb</p>
+
+<table style="float: left;">
+	<% @prints.each do |print| %>
+		<%= print.average_review %>
+	<% end %>
+	<tr>
+		
+		<td> </td>
+	</tr>
+</table>

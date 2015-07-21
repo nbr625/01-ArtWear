@@ -10,7 +10,7 @@
         </p>
         <p><strong>Description:</strong>
           <%= @print.description %></p>
-        <div class="star-rating" data-score= <%= @avg_review %> ></div>
+        <div class="star-rating" data-score= <%= @print.average_review %> ></div>
         <em><%= "#{@reviews.length} reviews" %></em>
         <p><%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "\'s thus far: #{@reviews.where(pledge: true).length}" %><p/>
       </div>
