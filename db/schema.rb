@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722090013) do
+ActiveRecord::Schema.define(version: 20150722124806) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "subproduct_id"
@@ -58,9 +58,7 @@ ActiveRecord::Schema.define(version: 20150722090013) do
   create_table "prints", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "pledge"
     t.integer  "rating"
-    t.string   "category"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "user_id"
@@ -75,7 +73,6 @@ ActiveRecord::Schema.define(version: 20150722090013) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.string   "creator"
     t.text     "description"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -84,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150722090013) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
+    t.integer  "print_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -94,7 +92,6 @@ ActiveRecord::Schema.define(version: 20150722090013) do
     t.integer  "user_id"
     t.integer  "print_id"
     t.integer  "product_id"
-    t.boolean  "pledge"
     t.integer  "flag_count", default: 0
   end
 

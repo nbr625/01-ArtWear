@@ -13,7 +13,6 @@ class PrintsController < ApplicationController
 
   def show
     @reviews = Review.where(print_id: @print.id).order("created_at DESC")
-    @pledge = @print.pledge
   end
 
 
@@ -23,8 +22,8 @@ class PrintsController < ApplicationController
 
   # Turn a print, under review, into a product instance.
   def turn_into_product
-    @product = Product.new(image: @print.image, name: @print.name, creator: @print.user.name, \
-      description: @print.description)
+    @product = Product.new(image: @print.image, name: @print.name, \
+      description: @print.description, user_id: @print.user_id, print_id: @print.id)
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }

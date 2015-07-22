@@ -5,6 +5,7 @@ class Print < ActiveRecord::Base
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 	has_many :pledges, dependent: :destroy
 	has_many :users, through: :pledges
+	has_one :product
 
 	def average_review
 		reviews = Review.where(print_id: self.id)
