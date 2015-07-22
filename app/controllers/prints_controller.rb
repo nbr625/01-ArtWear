@@ -12,6 +12,7 @@ class PrintsController < ApplicationController
 
   def show
     @reviews = Review.where(print_id: @print.id).order("created_at DESC")
+    @pledge = @print.pledge
   end
 
 

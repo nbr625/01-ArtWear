@@ -13,6 +13,20 @@
 
 </table>
 <br/>
+
+<table class="table table-hover" style="float: left;">
+	<tr><strong>Best Rated Prints</strong></tr>
+	<% @prints.sort_by(&:average_review).reverse.first(5).each do |print| %>	
+	<tr>
+		<td><%= link_to image_tag print.image.url(:thumb) %></td>
+		<td><%= link_to print.name, print_path(print) %>
+		<td><%= print.average_review %></td>
+		<td><%= link_to print.user.username, user_path(print.user) %></td>
+	<% end %>
+	</tr>
+
+</table>
+<br/>
 <div style="text-align:center;"><%= link_to "See All", admin_best_rated_path, class: "btn btn-default" %></div>
 <br/>
 <table class="table table-hover" style="float: left;">

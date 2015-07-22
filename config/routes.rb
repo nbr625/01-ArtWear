@@ -22,11 +22,12 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  resources :users
+  resources :users 
 
   resources :prints do
     member do
       put 'flag'
+    resources :pledges
     end
     resources :reviews, except: :show do
       member do
