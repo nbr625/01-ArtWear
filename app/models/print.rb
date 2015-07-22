@@ -6,7 +6,6 @@ class Print < ActiveRecord::Base
 	has_many :pledges, dependent: :destroy
 	has_many :users, through: :pledges
 
-
 	def average_review
 		reviews = Review.where(print_id: self.id)
 		if reviews.blank?
@@ -15,4 +14,21 @@ class Print < ActiveRecord::Base
 			self.average_review = self.reviews.average(:rating).round(2)
 		end
 	end
+
+	def pledge_count
+		if self.pledges.blank?
+			return 0
+		else
+			self.pledges.length
+		end
+
+	end
+
+private
+
+	def update_pledge_count
+		self[:pledge_count] = pledge_count
+		self.save
+	end
+
 end

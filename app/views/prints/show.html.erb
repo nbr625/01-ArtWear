@@ -1,5 +1,8 @@
 <div class="panel panel-default">
   <div class="panel-body">
+    <% if current_user.admin? %>
+      <div><%= link_to "Turn into Product", turn_into_product_print_path(@print), method: :put %></div>
+    <% end %>
     <div class="row">
       <div>
         <%= link_to 'Back to All Under Review', prints_path %>

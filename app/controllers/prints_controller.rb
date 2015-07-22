@@ -1,5 +1,6 @@
 class PrintsController < ApplicationController
-  before_action :set_print, only: [:show, :edit, :update, :destroy, :flag]
+  before_action :set_print, only: [:show, :edit, :update, :destroy, :flag, :turn_into_product]
+  attr_accessor :edit
   
 
 
@@ -20,16 +21,14 @@ class PrintsController < ApplicationController
     @print = current_user.prints.build
   end
 
-  
-  def edit
-  end
-
-  def make_product
-    @product = Product.new(image: @print.image, name: @print.name, creator: @print.creator, description: @print.description, user_id: @print.user_id)
+  # Turn a print, under review, into a product instance.
+  def turn_into_product
+    @product = Product.new(image: @print.image, name: @print.name, creator: @print.user.name, \
+      description: @print.description)
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @print }
+        format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -56,7 +55,7 @@ class PrintsController < ApplicationController
     @print.flag_print
     respond_to do |format|
       if @print.save
-        format.html { redirect_to @print, notice: 'Print was successfully created.' }
+        format.html { redirect_to @print, notice: 'Print was successfully flagged.' }
         format.json { render :show, status: :created, location: @print }
       else
         format.html { render :new }
@@ -92,6 +91,6 @@ class PrintsController < ApplicationController
     end
 
     def print_params
-      params.require(:print).permit(:name, :description, :rating, :category, :image, :average_review, :flag_count)
+      params.require(:print).permit(:name, :description, :rating, :category, :image, :average_review, :flag_count, :pledge_count)
     end
 end
