@@ -92,6 +92,6 @@ class PrintsController < ApplicationController
     end
 
     def print_params
-      params.require(:print).permit(:name, :description, :pledge, :rating, :category, :image, :average_review, :flag_count)
+      params.require(:print).permit(:name, :description, :rating, :category, :image, :average_review, :flag_count)
     end
 end

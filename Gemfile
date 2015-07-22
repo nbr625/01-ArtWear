@@ -28,6 +28,8 @@ gem 'devise', '~> 3.5.1'
 gem 'paperclip', '~> 4.3.0'
 # For styling Css and Javascript
 gem 'bootstrap-sass', '~> 3.3.5.1'
+# Bootstrap Forms
+gem 'bootstrap_form', '~> 2.3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

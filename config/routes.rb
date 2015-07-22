@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'admin/flagged_prints'
   get 'admin/out_of_stock'
 
+  get 'pledge/thank_you'
+
   resources :order_items, only: [:create, :update, :destroy]
   get 'order_items/create'
   get 'order_items/update'
@@ -27,8 +29,8 @@ Rails.application.routes.draw do
   resources :prints do
     member do
       put 'flag'
-    resources :pledges
     end
+    resources :pledges, except: :show
     resources :reviews, except: :show do
       member do
         put 'flag'

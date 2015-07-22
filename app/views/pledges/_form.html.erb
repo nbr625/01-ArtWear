@@ -1,22 +1,19 @@
-<%= form_for([@print, @pledge], layout: :horizontal, label_col: "col-sm-0", control_col: "col-sm-4") do |f| %>
+<%= bootstrap_form_for([@print, @pledge], layout: :horizontal, label_col: "col-sm-0", control_col: "col-sm-4") do |f| %>
   <% if @pledge.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@pledge.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-      <ul>
-      <% @review.errors.full_messages.each do |message| %>
+      <% @pledge.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-  <%= link_to "Back", @print, class: "btn btn-default" %>
-  <br/>
+  
+  <div style="text-align: center;">
+    <%= f.check_box :agreement, label: "I Agree" %>
+  </div>
 
-  <%= f.check_box :agreement %>Agree
-
   <br/>
-  <div>
-    <%= f.submit "Support" %>
+  <div style="text-align: center;">
+    <%= f.submit "Support", class: "btn-lg btn-primary"%>
   </div>
 <% end %>
