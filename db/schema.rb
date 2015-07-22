@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721141512) do
+ActiveRecord::Schema.define(version: 20150722090013) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "subproduct_id"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150721141512) do
     t.datetime "image_updated_at"
     t.integer  "average_review"
     t.integer  "flag_count",         default: 0
+    t.integer  "pledge_count"
   end
 
   create_table "products", force: :cascade do |t|

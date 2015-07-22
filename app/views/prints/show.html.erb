@@ -13,7 +13,7 @@
           <%= @print.description %></p>
         <div class="star-rating" data-score= <%= @print.average_review %> ></div>
         <em><%= "#{@reviews.length} reviews" %></em>
-        <p><%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "\'s thus far: #{@reviews.where(pledge: true).length}" %><p/>
+        <p><%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "\'s thus far: #{@print.pledges.length}. Last Pledger: #{@print.pledges.last.user.username}" %><p/>
         <p><%= "flags: #{@print.flag_count}"%></p>
       </div>
 
@@ -39,7 +39,7 @@
               </div>
               <p><%= "Flags: #{review.flag_count}" %></p>
               
-              <% if review.pledge == true %>
+              <% if @print.users.include?(@user) %>
                 <%= image_tag('heart_icon.jpg', width: 100, height: 100) %>
               <% end %>
               <% if current_user == @user %>
