@@ -1,17 +1,31 @@
 <p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
+  	<tr>
+  		<td><%= link_to "Go to the Shop", products_path, class: "btn btn-default" %></td>
+		<td style="float: right;"><%= link_to "Post a Print", new_print_path, class: "btn btn-success" %></td>
+	</tr>
 
-<h1><%= link_to "Post a Print", new_print_path, class: "btn btn-danger" %></h1>
+	<br/>
 
-<%= link_to "Go to the Shop", products_path %>
 
-<br/>
+	<div style="text-align:center;">
+	  <h1 class="form_title" style="text-align:center;">The Funnel</h1>
+	  <ul id="menu">
+	    <li class="sub">
+	      <% @prints.each do |print| %>
+	        <div class="col-sm-6 col-md-3">
+	          <div class="thumbnail">
+	            <%= link_to (image_tag print.image.url(:medium)), print_path(print) %>
+	            <%= print.name %>
 
-<% @prints.each do |print| %>
-
-  
-  <p><%= link_to (image_tag print.image.url(:medium)), print_path(print) %></p>
-  <p><%= print.name %></p>
-
-<% end %>
+	          </div>
+	        </div>
+	      <% end %>
+	    </li>
+	  </ul>
+	</div>
+  </div>
+</div>
 
 

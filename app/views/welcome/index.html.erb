@@ -1,28 +1,26 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="row-fluid" style="text-align:center"><em class="welcome_pictures"><%= link_to image_tag('splatbanner1.jpg'), root_path %></em></div>
-    <div class="row-fluid" style="text-align:center;"><%= link_to image_tag('peerreview.jpg'), prints_path %></div>
-    <div class="row-fluid" style="text-align:center;"><%= link_to image_tag('gallery.jpg'), products_path %></div>
-    
-    <br/><br/>
-    <h1 style="text-align:center;">Latest Prints</h1>
-    <ul class="slider5" id="menu">
-      <%@products.each do |product|%>
-        <li class="sub">
-          <div class="thumbnail">
-            <%= link_to (image_tag product.image.url(:thumb), class: 'image'), product %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-    <br/><br/>
-    
-    <h1 style="text-align:center;">Artist of the Month</h2>
-    <h4 style="text-align:center;">Claudia A. Riveros</h4>
-    <p>Raised in an Island off of Venezuela claudia was inspired the coexisting contrast between the calm beach culture and the rigorous karate lifestyle that was intrinsic to her familial unity. One can feel the disciplied sprezzature in her work.</p>
-    <div class="row-fluid" style="text-align:center;"><%= image_tag('footer_banner.jpg')%></div>
-  </div>
-</div>
+
+<div class="row-fluid" style="text-align:center"><em class="welcome_pictures"><%= link_to image_tag('splatbanner1.jpg'), root_path %></em></div>
+<div class="row-fluid" style="text-align:center;"><%= link_to image_tag('peerreview.jpg'), prints_path %></div>
+<div class="row-fluid" style="text-align:center;"><%= link_to image_tag('gallery.jpg'), products_path %></div>
+
+<br/><br/>
+<h1 style="text-align:center;">Latest Prints</h1>
+<ul class="slider5" id="menu">
+  <%@products.each do |product|%>
+    <li class="sub">
+      <div class="thumbnail">
+        <%= link_to (image_tag product.image.url(:thumb), class: 'image'), product %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<br/><br/>
+
+<h1 style="text-align:center;">Artist of the Month</h2>
+<h4 style="text-align:center;">Claudia A. Riveros</h4>
+<p>Raised in an Island off of Venezuela claudia was inspired the coexisting contrast between the calm beach culture and the rigorous karate lifestyle that was intrinsic to her familial unity. One can feel the disciplied sprezzature in her work.</p>
+<div class="footer_pic"><%= image_tag('footer_banner.jpg')%></div>
+
 <script>
   $('.slider5').bxSlider({
     minSlides: 3,

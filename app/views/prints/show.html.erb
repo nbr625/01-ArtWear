@@ -16,7 +16,7 @@
           <%= @print.description %></p>
         <div class="star-rating" data-score= <%= @print.average_review %> ></div>
         <em><%= "#{@reviews.length} reviews" %></em>
-        <p><%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "\'s thus far: #{@print.pledges.length}. Last Pledger: #{@print.pledges.last.user.username}" %><p/>
+        <p><%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "\'s thus far: #{@print.pledges.length}"%><p/>
         <p><%= "flags: #{@print.flag_count}"%></p>
       </div>
 
@@ -31,28 +31,36 @@
         <% if @reviews.blank? %>
           <h3>No reviews just yet, would you like to add the first?</h3>
         <% else %>
+          <table style="width: 100%;">
           <% @reviews.sort_by{|t| - t.created_at.to_i}.first(8).each do |review| %>
             <% @user = User.find(review.user_id)%>
-            <div class="row">
-              <div class="review_avatar"><%= link_to (image_tag @user.avatar.url(:thumb)), @user %></div>
-              <div class="reviews review_rating">
+            <tr>
+              <td>
+                <div class="review_avatar"><%= link_to (image_tag @user.avatar.url(:thumb)), @user %></div>
+                <div class="reviews review_rating">
                 <div class="star-rating" data-score= <%= review.rating %> ></div>
-                <p><%= review.comment %></p>
-                
-              </div>
-              <p><%= "Flags: #{review.flag_count}" %></p>
+              </td>
+              <td style="color: grey;"><%= review.comment %></td>
+            
+            </tr>
               
+
+            <tr>
               <% if @print.users.include?(@user) %>
-                <%= image_tag('heart_icon.jpg', width: 100, height: 100) %>
+                <td><%= image_tag('heart_icon.jpg', width: 45, height: 45) %></td>
               <% end %>
+            
+
               <% if current_user == @user %>
-                <div class="review_button"><%= link_to "Change", edit_polymorphic_path([@print ,review]), class: "btn btn-info" %></div>
-                <div class="review_button"><%= link_to 'Erase It', [@print, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></div>
-              <% end %>
-              <div><%= link_to "Flag comment", flag_print_review_path(@print, review), method: :put %></div>
-            </div> 
+                <td style="float: left;"><%= link_to "Change", edit_polymorphic_path([@print ,review]), class: "btn btn-info" %></td>                
+                <td style="float: left"><%= link_to 'Erase It', [@print, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
+                <td style="float:right"><%= link_to "Flag #{review.flag_count}", flag_print_review_path(@print, review), method: :put, class: "btn btn-default" %></td>
+                
+              <% end %>              
+            </tr> 
           <% end %>
         <% end %>
+        </table>
         <div style="text-align:center;">
           <%= link_to "All Reviews", print_reviews_path(@print), class: "btn btn-default"%>
         </div>

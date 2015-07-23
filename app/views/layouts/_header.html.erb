@@ -1,18 +1,22 @@
-<div class="container">
+<nav class="navbar navbar-inverse">
+  <div class="container-"></div>
   
-  <div class="navbar-header">
-    <ul class="nav navbar-nav">
-      <% if user_signed_in? %>
-        <li class="navbar_li"><%= link_to "Profile", current_user, class: "navbar_element", style: "color: #188945;" %></li>
-        <% if current_user.admin?%>
-          <%= link_to "Admin Side", admin_main_path %>
+    <div class="navbar-header">
+      
+      <ul class="nav nav-pills">
+        <% if user_signed_in? %>
+          <li><%= link_to "Profile", current_user, class: "btn btn-default"%></li>
+          <% if current_user.admin?%>
+            <li><%= link_to "Admin Side", admin_main_path, class: "btn btn-success" %></li>
+          <% end %>
+        <% else %>
+          <li class="navbar_li"><%= link_to "Sign Up!", new_user_registration_path, class: "btn btn-primary"%></li>
+          <li class="navbar_li"><%= link_to "Sign in", new_user_session_path, class: "btn btn-default"%></li>
+
         <% end %>
-      <% else %>
-        <li class="navbar_li"><%= link_to "Sign Up!", new_user_registration_path, class: "navbar_element", style: "color: #188945;" %></li>
-        <li class="navbar_li"><%= link_to "Sign in", new_user_session_path, class: "navbar_element", style: "color: #188945;"%></li>
-      <% end %>
-      <li class="cart-text"><%= render 'layouts/cart_text' %></li>
-     
-    </ul>
+        <li class="navbar_li"><%= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.subtotal} )", cart_path, class: "btn btn-danger"%></li>
+      </ul>
+
+    </div>
   </div>
-</div> 
+</nav>
