@@ -27,9 +27,15 @@
   </div>
   <div class="field">
     <%= f.label :image %><br>
-    <%= f.file_field :image, hide_label: true, class: "btn btn-default"%>
-   
+    <%= f.file_field :image, hide_label: true, class: "btn btn-default"%>   
   </div>
+  <div>
+    <%= f.radio_button :on_sale, false, :checked => true %> 
+    <%= label :on_sale_false, 'no' %>
+    <%= f.radio_button :on_sale, true %>
+    <%= label :on_sale_true, 'yes' %>
+  </div>
+
   <br/><br/>  
   <div class="actions">
     <%= f.submit "Post Product", class: "btn btn-default"  %>
