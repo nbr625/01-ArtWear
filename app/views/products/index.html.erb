@@ -1,19 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+    <div style="background-color: black;" class="panel-body">
 
-<h1>Listing Products</h1>
-<% if current_user.admin? %>
-	<%= link_to 'Add New Product', new_product_path %>
-<% end %>
+		<p id="notice"><%= notice %></p>
 
-<table>
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= link_to (image_tag product.image.url(:medium)), product_path(product) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br/>
-<%= link_to 'Under Review', new_product_path %>
+		<h1 class="pacifico_red">Listing Products</h1>
+		<% if current_user.admin? %>
+			<%= link_to 'Add New Product', new_product_path %>
+		<% end %>
+
+		<div style="text-align:center;">
+		  <h1 class="form_title" style="text-align:center;">New Release</h1>
+		  	<ul id="menu">
+		    	<li id="left" class="sub">
+
+    				
+		    		<% @products.each do |product| %>
+		    			<div>
+		    				
+		    			
+					      		
+				        	<%= link_to (image_tag product.image.url(:medium)), product_path(product) %>
+				        	<div class="pacifico_white_scroller"><%= product.name %></div><br/>
+					        
+					    </div>			        
+			        <% end %>
+			    </li>
+	      	</ul>
+		</div>
+		<br/>
+	</div>
+</div>

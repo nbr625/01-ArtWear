@@ -1,72 +1,84 @@
-
-<table>
-  <tr>
-    <td style="position: static;">
-      <table>
-        <tr>
-          <td>
-            <table>
-              <tr>
-                <td><%= link_to image_tag('lafonnel.jpg'), root_path %><td>
-              <tr/>
-              <tr>
-                <td><%= link_to image_tag('peerreview1.jpg'), prints_path %></td>
-              <tr/>
-              <tr>
-                <td><%= link_to image_tag('gallery1.jpg'), products_path %></td>
-              </tr>
-          
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-    <td class="spacer"></td>
-    <td>
-      <table>
-        <tr>
-          <td>
+<div class="panel panel-default">
+  <div style="background-color: #C00000;">
+    <table>
+      <tr>
+        <td class="spacer"></td>
+        <td style="text-align: center;">
+          <table>
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td><%= link_to image_tag('lafonnel.jpg'), root_path%><td>
+                  <tr/>
+                  <tr>
+                    <td ><%= link_to image_tag('peerreview1.jpg'), prints_path, class: "logo_pic" %></td>
+                  <tr/>
+                  <tr>
+                    <td><%= link_to image_tag('gallery1.jpg'), products_path, class: "logo_pic" %></td>
+                  </tr>
+              
+                </table>
+              </td>
             </tr>
-              <table>             
-                <tr>
-                  <td>Latest Products</td>
-                </tr>
-                <tr> 
-                  <td>
-                    <%@products.sort_by(&:created_at).reverse.first(4).each do |product|%>
-                      <%= link_to (image_tag product.image.url(:small), class: 'image'), product %>
-                    <% end %>
-                  </td>    
-                </tr>
-                <tr>
-                  <td>Best Rated Unreleased</td>
-                </tr>
-                <tr>
-                  <td>
-                    <ul class="slider5" id="menu">                
-                      <% @prints.sort_by(&:average_review).reverse.first(4).each do |print| %>
-                        
-                        <%= link_to (image_tag print.image.url(:small), class: 'image'), print %>
-                      <% end %> 
-                    </ul>                     
-                  </td>                 
-                </tr>
-              </table>
-            </td>
-          </tr>
+          </table>
         </td>
-      </table>
-    </td>
-  </tr>
-</table>
+        <td class="spacer"></td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                </tr>
+                  <table>             
+                    <tr>
+                      <td class="pacifico_white" style="font-size: 50px; text-align: center;">New Prints!</td>
+                    </tr>
+                    <tr> 
+                      <td style="text-align:center;">
+                        <%@products.sort_by(&:created_at).reverse.first(4).each do |product|%>
+                          <%= link_to (image_tag product.image.url(:small), class: 'image'), product %>
+                        <% end %>
+                      </td>    
+                    </tr>
+                    <tr>
+                      <td class="pacifico_white" style="font-size: 40px; text-align: center;">Need Reviews</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <ul class="slider5" id="menu">                
+                          <% @prints.sort_by(&:average_review).reverse.first(4).each do |print| %>
+                            
+                            <%= link_to (image_tag print.image.url(:small), class: 'image'), print %>
+                          <% end %> 
+                        </ul>                     
+                      </td>                 
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </td>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
 
 
 <br/><br/>
 
-<h1 style="text-align:center;">Artist of the Month</h2>
-<div style="text-align:center;"><%= image_tag('profile_pic.jpg')%></div>
-<h4 style="text-align:center;">Nicolas Berrizbeitia</h4>
-<p>Nicolas was born in Venezuela, which some people might take for a territory of Mexico. He always wanted to be writer and the more he codes, the more he realizes that natural evolution of writing is programming. Writing that can have an immediate effect in the world through the power of human ingenuity and imagination. He happens to be the creator of this site and also a great dancer.</p>
+<div class="panel panel-default">
+  <div style="background-color: black;" class="panel-body">
+    <h1 style="text-align:center; color: #F0EED2;">Artist of the Month</h1>
+    <div style="text-align:center;"><%= image_tag('profile_pic.jpg')%></div>
+    <h2 class="arizona_red" style="text-align:center; text-color: white;">Nicolas Berrizbeitia</h2>
+    <p style="color:#F0EED2;">Nicolas was born in Venezuela, which some people might take for a territory of Mexico. He always wanted to be writer and the more he codes, the more he realizes that natural evolution of writing is programming. Writing that can have an immediate effect in the world through the power of human ingenuity and imagination. He happens to be the creator of this site and also a great dancer.</p>
+  </div>
+</div>
+
+
+
 
 <script>
   $('.slider5').bxSlider({
