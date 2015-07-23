@@ -1,11 +1,23 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <% if current_user.admin? %>
-      <div><%= link_to "Turn into Product", turn_into_product_print_path(@print), method: :put %></div>
-    <% end %>
+    <table>
+      <tr>
+        <td>
+          <%= link_to 'Back', prints_path, class: "btn btn-default" %>
+          <% if current_user.admin? %>
+            <%= link_to "Turn into Product", turn_into_product_print_path(@print), method: :put, class: "btn btn-success" %>
+          <% end %>
+          <% if current_user.admin? || current_user == @print.user %>
+            <%= link_to "Edit Print", edit_print_path(@print), class: "btn btn-default" %>
+            <%= link_to 'Erase It', @print, method: :delete, class: "btn btn-danger" %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+    <br/>
     <div class="row">
       <div>
-        <%= link_to 'Back to All Under Review', prints_path %>
+        
         <p style="text-align: center;">
           <%= image_tag @print.image.url(:large) %>
         </p>
@@ -14,16 +26,23 @@
         </p>
         <p><strong>Description:</strong>
           <%= @print.description %></p>
-        <div class="star-rating" data-score= <%= @print.average_review %> ></div>
-        <em><%= "#{@reviews.length} reviews" %></em>
-        <p><%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "\'s thus far: #{@print.pledges.length}"%><p/>
-        <p><%= "flags: #{@print.flag_count}"%></p>
+        <table style="width: 100%;">
+          <tr>
+            <td>
+              <div class="star-rating" data-score= <%= @print.average_review %> ></div>
+              <div><%= "#{@reviews.length} reviews" %></div>
+          
+              <%= image_tag('heart_icon.jpg' , width: 30, height: 30) + "#{@print.pledges.length}"%>
+            <td/>
+            <td><%= link_to "Flag #{@print.flag_count}", flag_print_path(@print), method: :put, class: "btn btn-default"%></td>
+          </tr>
+        </table>
       </div>
 
       <br/>
 
-      <%= link_to "Write a Review", new_print_review_path(@print), class: "btn btn-default" %>
-      <%= link_to "Pledge for this Print", new_print_pledge_path(@print), class: "btn btn-danger"%>
+      <%= link_to "Review", new_print_review_path(@print), class: "btn btn-default" %>
+      <%= link_to "Pledge", new_print_pledge_path(@print), class: "btn btn-danger"%>
       <br/><br/>
  
       <div class="col-md-7 col-md-offset-1">
@@ -37,8 +56,6 @@
             <tr>
               <td>
                 <div class="review_avatar"><%= link_to (image_tag @user.avatar.url(:thumb)), @user %></div>
-                <div class="reviews review_rating">
-                <div class="star-rating" data-score= <%= review.rating %> ></div>
               </td>
               <td style="color: grey;"><%= review.comment %></td>
             
@@ -47,6 +64,10 @@
 
             <tr>
               <% if @print.users.include?(@user) %>
+                <td>
+                  <div class="reviews review_rating">
+                  <div class="star-rating" data-score= <%= review.rating %> ></div>
+                </td>
                 <td><%= image_tag('heart_icon.jpg', width: 45, height: 45) %></td>
               <% end %>
             
@@ -61,6 +82,7 @@
           <% end %>
         <% end %>
         </table>
+        <br/>
         <div style="text-align:center;">
           <%= link_to "All Reviews", print_reviews_path(@print), class: "btn btn-default"%>
         </div>
@@ -68,15 +90,6 @@
     </div>
   </div>
 </div>
-
-<div><%= link_to "Flag Print", flag_print_path(@print), method: :put %></div>
-
-<div> <%=link_to "Make into a product", method: :create_product %></div>
-
-<% if current_user.admin? || current_user == @print.user %>
-  <%= link_to "Edit Print", edit_print_path(@print), class: "btn btn-default" %>
-  <div class="review_button"><%= link_to 'Erase It', @print, method: :delete, class: "btn btn-default" %>
-<% end %>
 
 <script>
   $('.star-rating').raty({
