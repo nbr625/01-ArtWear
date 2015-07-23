@@ -17,15 +17,15 @@
             </ul>
             <h2>Products</h2>
             <ul class="slider5" id="menu">
-      			<%@user.products.each do |product|%>
-        			<div class="sub">
+      			  <%@user.products.each do |product|%>
+        			  <div class="sub">
           				<div class="thumbnail">
             				<%= link_to (image_tag product.image.url(:thumb), class: 'image'), product %>
             			</div>
             		</div>
             	<% end%>
             </ul>
-       		<h2></h2>
+       		<h2>
         </div>
 	</div>
 	<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-danger" %>

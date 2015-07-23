@@ -18,6 +18,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.tables{ border-collapse:collapse; table-layout:fixed;}
+
+div.left-division, div.right-division {
+	display:inline-block;
+}
+
 body {
 	background-image: url('background1.jpg');
 }
@@ -26,7 +32,9 @@ body {
 	float: right;
 	margin-left: 68%;
 }
-
+.spacer{
+	width: 50px;
+}
 .container {
     padding-right: 20px;
     padding-left: 20px;

@@ -1,25 +1,72 @@
 
-<div class="row-fluid" style="text-align:center"><em class="welcome_pictures"><%= link_to image_tag('splatbanner1.jpg'), root_path %></em></div>
-<div class="row-fluid" style="text-align:center;"><%= link_to image_tag('peerreview.jpg'), prints_path %></div>
-<div class="row-fluid" style="text-align:center;"><%= link_to image_tag('gallery.jpg'), products_path %></div>
+<table>
+  <tr>
+    <td style="position: static;">
+      <table>
+        <tr>
+          <td>
+            <table>
+              <tr>
+                <td><%= link_to image_tag('lafonnel.jpg'), root_path %><td>
+              <tr/>
+              <tr>
+                <td><%= link_to image_tag('peerreview1.jpg'), prints_path %></td>
+              <tr/>
+              <tr>
+                <td><%= link_to image_tag('gallery1.jpg'), products_path %></td>
+              </tr>
+          
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="spacer"></td>
+    <td>
+      <table>
+        <tr>
+          <td>
+            </tr>
+              <table>             
+                <tr>
+                  <td>Latest Products</td>
+                </tr>
+                <tr> 
+                  <td>
+                    <%@products.sort_by(&:created_at).reverse.first(4).each do |product|%>
+                      <%= link_to (image_tag product.image.url(:small), class: 'image'), product %>
+                    <% end %>
+                  </td>    
+                </tr>
+                <tr>
+                  <td>Best Rated Unreleased</td>
+                </tr>
+                <tr>
+                  <td>
+                    <ul class="slider5" id="menu">                
+                      <% @prints.sort_by(&:average_review).reverse.first(4).each do |print| %>
+                        
+                        <%= link_to (image_tag print.image.url(:small), class: 'image'), print %>
+                      <% end %> 
+                    </ul>                     
+                  </td>                 
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </td>
+      </table>
+    </td>
+  </tr>
+</table>
 
-<br/><br/>
-<h1 style="text-align:center;">Latest Prints</h1>
-<ul class="slider5" id="menu">
-  <%@products.each do |product|%>
-    <li class="sub">
-      <div class="thumbnail">
-        <%= link_to (image_tag product.image.url(:thumb), class: 'image'), product %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+
 <br/><br/>
 
 <h1 style="text-align:center;">Artist of the Month</h2>
-<h4 style="text-align:center;">Claudia A. Riveros</h4>
-<p>Raised in an Island off of Venezuela claudia was inspired the coexisting contrast between the calm beach culture and the rigorous karate lifestyle that was intrinsic to her familial unity. One can feel the disciplied sprezzature in her work.</p>
-<div class="footer_pic"><%= image_tag('footer_banner.jpg')%></div>
+<div style="text-align:center;"><%= image_tag('profile_pic.jpg')%></div>
+<h4 style="text-align:center;">Nicolas Berrizbeitia</h4>
+<p>Nicolas was born in Venezuela, which some people might take for a territory of Mexico. He always wanted to be writer and the more he codes, the more he realizes that natural evolution of writing is programming. Writing that can have an immediate effect in the world through the power of human ingenuity and imagination. He happens to be the creator of this site and also a great dancer.</p>
 
 <script>
   $('.slider5').bxSlider({

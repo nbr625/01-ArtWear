@@ -23,7 +23,8 @@ class PrintsController < ApplicationController
   # Turn a print, under review, into a product instance.
   def turn_into_product
     @product = Product.new(image: @print.image, name: @print.name, \
-      description: @print.description, user_id: @print.user_id, print_id: @print.id)
+      description: @print.description, user_id: @print.user_id, print_id: @print.id, \
+       creator: @print.user.username)
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
