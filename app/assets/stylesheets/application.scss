@@ -31,15 +31,20 @@ h1 {
          -o-transition: all 0.5s linear;
             transition: all 0.5s linear;
 }
+.red_arizonia_40{
+	font-family: 'Arizonia';
+	font-size: 40px;
+	color: #C00000;
+}
 .logo_pic:hover {
 	opacity: 0.7;
 }
-.arizona_red {
+.arizonia_red {
 	font-family: 'Arizonia';
 	color: #C00000;
 }
 
-.arizona_white {
+.arizonia_white {
 	font-family: 'Arizonia';
 	color: white;
 }
@@ -71,7 +76,7 @@ h1 {
     overflow: scroll;
 }
 #right {
-    float: left;
+    float: right;
     width: 300px;
     height: 1000px;
     overflow: scroll;

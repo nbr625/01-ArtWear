@@ -2,11 +2,10 @@
     <div style="background-color: black;" class="panel-body">
 
 		<p id="notice"><%= notice %></p>
-
-		<h1 class="pacifico_white">Shop</h1>
 		<% if current_user.admin? %>
-			<%= link_to 'Add New Product', new_product_path %>
+			<%= link_to 'Add New Product', new_product_path, class: "btn btn-success" %>
 		<% end %>
+		<h1 class="pacifico_white" style="font-size: 70px; text-align:center;">Shop</h1><br/>
 		<div style="text-align:center;"
 		  	<ul id="menu">
 		    	<li id="left" class="sub">
@@ -22,13 +21,29 @@
 		</div>
 		<div style="text-align:center;"
 		  	<ul id="menu">
-		    	<li id="right" class="sub">
-		    		<h1 class="form_title">New Release</h1>		
-		    		<% @products.sort_byeach do |product| %>
-		    			<div>		      		
-				        	<%= link_to (image_tag product.image.url(:medium)), product_path(product) %>
-				        	<div class="pacifico_white_scroller"><%= product.name %></div><br/>
-					    </div>			        
+		    	<li id="left" class="sub">
+		    		<h1 class="arizonia_white">On Sale</h1>		
+		    		<% @products.each do |product| %>
+		    			<% if product.on_sale? %>
+		
+			    			<div>		      		
+					        	<%= link_to (image_tag product.image.url(:medium)), product_path(product) %>
+					        	<div class="pacifico_white_scroller"><%= product.name %></div><br/>
+						    </div>
+						<% end %>
+			        <% end %>
+			    </li>
+	      	</ul>
+		</div>
+		<div style="text-align:center;"
+		  	<ul id="menu">
+		    	<li id="left" class="sub">
+	    		<h1>Random</h1>		
+		    		<% @products.shuffle.each do |product| %>		
+			    			<div>		      	
+					        	<%= link_to (image_tag product.image.url(:medium)), product_path(product) %>
+					        	<div class="pacifico_white_scroller"><%= product.name %></div><br/>
+						    </div>			  
 			        <% end %>
 			    </li>
 	      	</ul>

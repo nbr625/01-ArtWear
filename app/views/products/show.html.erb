@@ -1,29 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-body"> 
+    <p id="notice"><%= notice %></p>
+    <%= link_to 'Back', products_path, class: "btn btn-default" %>
+    <% if current_user.admin? %>
+      <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"%>
+    <% end %>
+    <br/>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-<p>
-	<%= image_tag @product.image.url(:large) %>
-</p>
-<p>
-  <strong>Designer:</strong>
-  <%= @product.creator %>
-</p>
+    <div class="product_image" style="text-align: center;"><%= image_tag @product.image.url(:large) %></div>
+    <div style="text-align:center;">by&nbsp;<span class="red_arizonia_40"><%= @product.creator %></span></div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+    
+    <br/><br/>
+    <class class="well" style="background-color: black; color: white;"><%= @product.description %></class>
+    <br/><br/><br/>
 
-<% @product.subproducts.each do |subproduct| %>
-  <%= render "subproduct_row", subproduct: subproduct, order_item: @order_item %>
-<% end %>
+    <% @product.subproducts.each do |subproduct| %>
+      <%= render "subproduct_row", subproduct: subproduct, order_item: @order_item %>
+    <% end %>
 
-<% if current_user.admin? %>
-  <%= render "subproducts/form"%>
-  <%= link_to 'Edit', edit_product_path(@product) %>
-<% end %>
-
-<%= link_to 'Back to Shop', products_path %>
+    <% if current_user.admin? %>
+      <%= render "subproducts/form"%>
+      <%= link_to 'Edit Subproduct', edit_polymorphic_path([@product, @subproduct]), class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
