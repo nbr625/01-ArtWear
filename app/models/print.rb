@@ -12,7 +12,7 @@ class Print < ActiveRecord::Base
 		if reviews.blank?
 			self.average_review = 0
 		else 
-			self.average_review = self.reviews.average(:rating).round(2)
+			self.average_review = self.reviews.average(:rating)
 		end
 	end
 
