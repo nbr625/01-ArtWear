@@ -46,7 +46,7 @@
                     <tr>
                       <td>
                         <ul class="slider5" id="menu">                
-                          <% @prints.sort_by(&:average_review).reverse.first(4).each do |print| %>
+                          <% @prints.sort_by(&:created_at).reverse.first(4).each do |print| %>
                             
                             <%= link_to (image_tag print.image.url(:small), class: 'image'), print %>
                           <% end %> 
