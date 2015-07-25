@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-  	@products = Product.recent
+  	@products = Product.all
   	@prints = Print.all
   end
 end

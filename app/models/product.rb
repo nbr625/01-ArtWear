@@ -7,9 +7,6 @@ class Product < ActiveRecord::Base
 	has_many :products
 	has_many :subproducts, dependent: :destroy
 
-	def self.recent
-  		where('created_at > ?', Time.now-30.days.ago).order("created_at desc").first(10)
-	end
 
 	def update_user_name
 		user = User.find(params[username: self.creator])
