@@ -29,6 +29,8 @@ gem 'paperclip', '~> 4.3.0'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 # Bootstrap Forms
 gem 'bootstrap_form', '~> 2.3.0'
+gem 'angularjs-rails', '~> 1.2.25'
+gem 'responders', '~> 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
