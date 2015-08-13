@@ -41,6 +41,9 @@ GEM
     autoprefixer-rails (5.2.1)
       execjs
       json
+    aws-sdk (1.43.3)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -181,6 +184,7 @@ PLATFORMS
 
 DEPENDENCIES
   angularjs-rails (~> 1.2.25)
+  aws-sdk
   bootstrap-sass (~> 3.3.5.1)
   bootstrap_form (~> 2.3.0)
   byebug
