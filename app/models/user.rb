@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   has_many :pledges
   has_many :reviews, dependent: :destroy
   # Paperclip avatar picture requirement.
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" } \\
-  storage: :s3, bucket: 'artware', s3_credentials: S3_CREDENTIALS
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :storage => :s3, :s3_credentials => S3_CREDENTIALS
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 end

@@ -31,12 +31,15 @@ gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'bootstrap_form', '~> 2.3.0'
 gem 'angularjs-rails', '~> 1.2.25'
 gem 'responders', '~> 2.0'
+gem 'carrierwave'
+gem 'foreman', '~> 0.78.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'aws-sdk'
+gem 'fog'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
