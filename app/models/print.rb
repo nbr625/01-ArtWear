@@ -2,7 +2,8 @@ class Print < ActiveRecord::Base
 	belongs_to :user
 	has_many :reviews, dependent: :destroy
 	has_attached_file :image, styles: {large: "600x600>", medium: "400x600#", small: "150x150#", thumb: "100x100#"}, :storage => :s3,
-                    :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+                    :s3_credentials => Proc.new{|a| a.instance.s3_credentials }, :url =>':s3_domain_url', 
+                    :path => '/:class/:attachment/:id_partition/:style/:filename'
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 	has_many :pledges, dependent: :destroy
 	has_many :users, through: :pledges

@@ -88,8 +88,6 @@ Rails.application.configure do
     },
     :fog_directory => ENV['AWS_BUCKET'],
     :bucket => ENV['AWS_BUCKET']
-    :url =>':s3_domain_url',
-    :path => '/:class/:attachment/:id_partition/:style/:filename',
   )
 
   
