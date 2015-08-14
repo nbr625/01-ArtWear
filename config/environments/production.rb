@@ -86,8 +86,10 @@ Rails.application.configure do
       :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
     },
-    :fog_directory => ENV['AWS_BUCKET'], # only one of those is needed but I don't remember which
+    :fog_directory => ENV['AWS_BUCKET'],
     :bucket => ENV['AWS_BUCKET']
+    :url =>':s3_domain_url',
+    :path => '/:class/:attachment/:id_partition/:style/:filename',
   )
 
   
