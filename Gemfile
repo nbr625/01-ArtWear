@@ -38,7 +38,7 @@ gem 'foreman', '~> 0.78.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 1.6'
 gem 'fog'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

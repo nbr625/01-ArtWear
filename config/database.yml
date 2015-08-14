@@ -7,6 +7,7 @@
 development:
   adapter: postgresql
   database: artware_development
+  
   pool: 5
   timeout: 5000
 
@@ -22,5 +23,7 @@ production:
   adapter: postgresql
   encoding: utf8
   database: artware_development
+  access_key_id: AKIAJXZAAVX5X6T3T34A
+  secret_access_key: 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
   pool: 5
   timeout: 5000
