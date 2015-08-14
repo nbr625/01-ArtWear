@@ -45,5 +45,15 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.assets.initialize_on_precompile = false
+  Paperclip::Attachment.default_options.merge!(
+    :storage => :fog,
+    :fog_credentials => {
+      :provider => 'AWS',
+      :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+    },
+    :fog_directory => ENV['AWS_BUCKET'], # only one of those is needed but I don't remember which
+    :bucket => ENV['AWS_BUCKET']
+  )
 
 end

@@ -79,15 +79,16 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.consider_all_requests_local = true
-
-  config.paperclip_defaults = {
-    :storage => :s3,
+  Paperclip::Attachment.default_options.merge!(
+    :storage => :fog,
+    :fog_credentials => {
+      :provider => 'AWS',
+      :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+    },
+    :fog_directory => ENV['AWS_BUCKET'], # only one of those is needed but I don't remember which
     :bucket => ENV['AWS_BUCKET']
-    :s3_credentials => {
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    }
-  }
+  )
 
   
 
