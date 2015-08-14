@@ -18,14 +18,38 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+/* blue = #07b4ed, fuschia = #ed1894,
+   purple = #8562a8, green = #699638 */
+
 * {
     font-family: 'Orbitron', sans-serif;
  }
+.btn-danger {
+	font-size: 24px;
+	font-family: 'Pacifico', cursive;
+	border-color: #068ebb;
+	background-color: #07b4ed;
+
+}
+
+.btn-success {
+	font-size: 24px;
+	font-family: 'Pacifico', cursive;
+	border-color: #ab0d69;
+	background-color: #ed1894;
+}
+.btn-default {
+	font-size: 24px;
+	font-family: 'Pacifico', cursive;
+	background-color: black;
+	color: white;
+}
 
 h1 {
 	font-family: 'Arizonia';
 	font-size: 50px;
-	color: 990000;
+	color: #07b4ed ;
 }
 .logo_pic{
 	-webkit-transition: all 0.5s linear;
