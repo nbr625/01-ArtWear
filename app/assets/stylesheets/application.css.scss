@@ -46,18 +46,38 @@
 	background-color: black;
 	color: white;
 }
+.review_btn {
+    display: inline-block;
+    width: 240px;
+    height: 388px;
+    background: url(reviewupright1.jpg);
+}
 
+.review_btn:hover {
+    background: url('reviewupright3.jpg');
+}
+.shop_btn {
+    display: inline-block;
+    width: 240px;
+    height: 388px;
+    background: url(shop_upright_1.jpg);
+}
+
+.shop_btn:hover {
+    background: url('shop_upright_3.jpg');
+}
 h1 {
 	font-family: 'Arizonia';
 	font-size: 50px;
 	color: #07b4ed ;
 }
-.logo_pic{
-	-webkit-transition: all 0.5s linear;
-       -moz-transition: all 0.5s linear;
-        -ms-transition: all 0.5s linear;
-         -o-transition: all 0.5s linear;
-            transition: all 0.5s linear;
+.review_button{
+	float: left;
+	background-image: url(reviewupright1.jpg);
+}
+.review_button:hover {
+	background-color: black;
+
 }
 .red_arizonia_40{
 	font-family: 'Arizonia';

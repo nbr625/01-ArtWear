@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div style="background-color: black;">
+  <div class="splat-container" style="background-color: black; padding: 50px; border-color: black;">
     <table>
       <tr>
         <td class="spacer"></td>
@@ -9,11 +9,11 @@
               <td>
                 <table>
                   <tr>
-                    <td style="max-width: 600px" style="max-height: 700 "><%= link_to image_tag('frontbanner3.jpg'), root_path%><td>
+                    <td style="max-width: 600px" style="max-height: 700;><%= link_to image_tag('frontbanner3.jpg'), root_path%><td>
                   <tr/>
                   <tr>
                     <td>
-                      <div style="float: left;"><%= link_to image_tag('Store_upright.jpg'), products_path, class: "logo_pic" %><%= link_to image_tag('Review_upright.jpg'), prints_path, class: "logo_pic" %></div>
+                      <div><%= link_to " ", prints_path, class: "review_btn" %><%= link_to ' ', products_path, class: "shop_btn" %></div>
 
                     </td>
                   </tr>
