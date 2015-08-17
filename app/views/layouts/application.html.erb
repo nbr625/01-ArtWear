@@ -27,10 +27,15 @@
 
 <body>
   <%= render 'layouts/header' %>
-	<div class="container">
+	<div class="container" style="width:80%; float: left;">
 		<%= yield %>
 		<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </div>
+  <div class="panel panel-default" style="width:14%; float:left;">
+    <div><%= link_to " ", prints_path, class: "review_btn" %><%= link_to ' ', products_path, class: "shop_btn" %></div>
+  </div>
+
+
 </body>
 </html>
