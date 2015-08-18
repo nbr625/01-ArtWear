@@ -48,6 +48,8 @@
 	background-color: black;
 	color: white;
 }
+
+/** SideBar Buttons =================== **/  
 .review_btn {
     display: inline-block;
     width: 240px;
@@ -55,10 +57,30 @@
     background: url(reviewupright1.jpg);
     transition: all .3s ease-in;
 }
-
 .review_btn:hover {
+    background: url('reviewupright2.jpg');
+}
+.review_btn:focus {
     background: url('reviewupright3.jpg');
 }
+
+
+.submit_btn {
+    display: inline-block;
+    width: 240px;
+    height: 388px;
+    background: url(submit_upright_1.jpg);
+    transition: all .3s ease-in;
+}
+
+.submit_btn:hover {
+    background: url('submit_upright_2.jpg');
+}
+.submit_btn:focus {
+    background: url('submit_upright_3.jpg');
+}
+
+
 .shop_btn {
     display: inline-block;
     width: 240px;
@@ -68,15 +90,23 @@
 }
 
 .shop_btn:hover {
-    background: url('shop_upright_3.jpg');
+    background: url('shop_upright_2.jpg');
 }
+.shop_btn:focus {
+	background: url('shop_upright_3.jpg');
+}
+
+
+
 h1 {
 	font-family: 'Arizonia';
 	font-size: 50px;
 	color: #07b4ed ;
 }
 #banner_pic {
+	float: left;
 	width: 480px;
+	min-width: 300px;
 	height: 688px;
 	background-image: url('banner3.jpg');
 	transition: all .5s ease-in;

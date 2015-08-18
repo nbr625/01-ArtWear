@@ -1,67 +1,42 @@
 <div class="panel panel-default">
   <div style="background-color: black; padding: 50px; border-color: black;">
-    <table>
+    <div id="banner_pic"></div>
+
+    <table style="float: right;">
       <tr>
-        <td class="spacer"></td>
-        <td style="text-align: center;">
-          <table>
-            <tr>
-              <td>
-                <table>
-                  <tr>
-                    <td ><div id="banner_pic"></div></td>
-                  <tr/>
-                  <tr>
-                    <td>
-                      
-                    </td>
-                  </tr>
-              
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td class="spacer"></td>
         <td>
-          <table>
-            <tr>
-              <td>
-                </tr>
-                  <table>             
-                    <tr>
-                      <td class="pacifico_white" style="font-size: 50px; text-align: center;">New Prints!</td>
-                    </tr>
-                    <tr> 
-                      <td style="text-align:center;">
-                        <%@products.sort_by(&:created_at).reverse.first(6).each do |product|%>
-                          <%= link_to (image_tag product.image.url(:small), class: 'image'), product %>
-                        <% end %>
-                      </td>    
-                    </tr>
-                    <tr>
-                      <td class="pacifico_white" style="font-size: 40px; text-align: center;">Need Reviews</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <ul class="slider5" id="menu">                
-                          <% @prints.sort_by(&:created_at).reverse.first(4).each do |print| %>
-                            
-                            <%= link_to (image_tag print.image.url(:small), class: 'image'), print %>
-                          <% end %> 
-                        </ul>                     
-                      </td>                 
-                    </tr>
-                  </table>
-                </td>
+          </tr>
+            <table>             
+              <tr>
+                <td class="pacifico_white" style="font-size: 50px; text-align: center;">New Prints!</td>
               </tr>
-            </td>
-          </table>
-        </td>
-      </tr>
+              <tr> 
+                <td style="text-align:center;">
+                  <%@products.sort_by(&:created_at).reverse.first(6).each do |product|%>
+                    <%= link_to (image_tag product.image.url(:small), class: 'image'), product %>
+                  <% end %>
+                </td>    
+              </tr>
+              <tr>
+                <td class="pacifico_white" style="font-size: 40px; text-align: center;">Need Reviews</td>
+              </tr>
+              <tr>
+                <td>
+                  <ul class="slider5" id="menu">                
+                    <% @prints.sort_by(&:created_at).reverse.first(4).each do |print| %>
+                      
+                      <%= link_to (image_tag print.image.url(:small), class: 'image'), print %>
+                    <% end %> 
+                  </ul>                     
+                </td>                 
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </td>
     </table>
   </div>
-</div>
+</div>       
 
 
 
