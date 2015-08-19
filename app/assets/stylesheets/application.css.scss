@@ -29,6 +29,16 @@
 .splat-container {
 	width: 100%;
 }
+.btn:hover {
+	background: url('btn-bg2.jpg');
+}
+
+.btn-primary {
+	font-size: 24px;
+	font-family: 'Pacifico', cursive;
+	border-color: #068ebb;
+	background-color: #07b4ed;
+}
 .btn-info {
 	font-size: 24px;
 	color: black;
@@ -42,11 +52,18 @@
 	border-color: #068ebb;
 	background-color: #07b4ed;
 }
+.btn-danger:hover {
+	background: url('btn-bg1.jpg');
+}
+
 .btn-warning {
 	font-size: 24px;
 	font-family: 'Pacifico', cursive;
 	border-color: #8562a8;
 	background-color: #8562a8;
+}
+.btn-warning:hover {
+	background: url('btn-bg4.jpg');
 }
 .btn-success {
 	font-size: 24px;
@@ -54,12 +71,23 @@
 	border-color: #ab0d69;
 	background-color: #ed1894;
 }
+.btn-success:hover{
+	background: url('btn-bg2.jpg');
+}
+
 .btn-default {
 	font-size: 24px;
 	border-color: black;
 	font-family: 'Pacifico', cursive;
 	background-color: black;
 	color: white;
+}
+.btn-default:hover {
+	color:white;
+	background: url('btn-bg3.jpg');
+}
+.btn:focus {
+	background: url('btn-bg5.jpg');
 }
 
 /** SideBar Buttons =================== **/  

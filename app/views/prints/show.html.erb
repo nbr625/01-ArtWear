@@ -32,7 +32,7 @@
               <div class="star-rating" data-score= <%= @print.average_review %> ></div>
               <div><%= "#{@reviews.length} reviews" %></div>
           
-              <%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "#{@print.pledges.length}"%>
+              <%= image_tag('pledge.png' , width: 70, height: 70) + "#{@print.pledges.length}"%>
             <td/>
             <td><%= link_to "Flag #{@print.flag_count}", flag_print_path(@print), method: :put, class: "btn btn-default"%></td>
           </tr>
@@ -74,7 +74,7 @@
                   <div class="reviews review_rating">
                   <div class="star-rating" data-score= <%= review.rating %> ></div>
                 </td>
-                <td><%= image_tag('heart_icon.jpg', width: 45, height: 45) %></td>
+                <td><%= image_tag('pledge.png', width: 45, height: 45) %></td>
               <% end %>
             
 
