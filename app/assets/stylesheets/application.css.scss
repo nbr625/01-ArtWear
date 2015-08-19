@@ -25,15 +25,22 @@
 * {
     font-family: 'Orbitron', sans-serif;
  }
+
+.splat-container {
+	width: 100%;
+}
+
 .btn-danger {
 	font-size: 24px;
 	font-family: 'Pacifico', cursive;
 	border-color: #068ebb;
 	background-color: #07b4ed;
-
 }
-.splat-container {
-	width: 100%;
+.btn-warning {
+	font-size: 24px;
+	font-family: 'Pacifico', cursive;
+	border-color: #8562a8;
+	background-color: #8562a8;
 }
 .btn-success {
 	font-size: 24px;
@@ -142,6 +149,21 @@ h1 {
 	font-family: 'Arizonia';
 	color: white;
 }
+.arizonia_black_50 {
+	font-family: 'Arizonia';
+	color: black;
+	font-size: 50px;
+}
+.arizonia_black_60 {
+	font-family: 'Arizonia';
+	color: black;
+	font-size: 60px;
+}
+.arizonia_pink_50 {
+	font-family: 'Arizonia';
+	color: #ed1894;
+	font-size: 50px;
+}
 .open_sans_black{
 	font-family: 'Open Sans Condensed', sans-serif;
 }
@@ -152,6 +174,16 @@ h1 {
 .pacifico_white{
 	font-family: 'Pacifico', cursive;
 	color: #F0EED2;
+}
+.pacifico_black_40{
+	font-family: 'Pacifico', cursive;
+	color: black;
+	font-size: 40px;
+}
+.pacifico_purple_70{
+	font-family: 'Pacifico', cursive;
+	color: #8562a8;
+	font-size: 70px;
 }
 
 .pacifico_white_scroller{
@@ -170,7 +202,7 @@ h1 {
     overflow: scroll;
 }
 #right {
-    float: right;
+    float: left;
     width: 300px;
     height: 1000px;
     overflow: scroll;

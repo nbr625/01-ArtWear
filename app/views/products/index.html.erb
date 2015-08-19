@@ -12,7 +12,7 @@
 		    		<h1 class="form_title">New Release</h1>
 		    		<% @products.each do |product| %>
 		    			<div>		      		
-				        	<%= link_to (image_tag product.image.url(:medium)), product_path(product) %>
+				        	<%= link_to (image_tag product.image.url(:small)), product_path(product) %>
 				        	<div class="pacifico_white_scroller"><%= product.name %></div><br/>
 					    </div>			        
 			        <% end %>
@@ -27,7 +27,7 @@
 		    			<% if product.on_sale? %>
 		
 			    			<div>		      		
-					        	<%= link_to (image_tag product.image.url(:medium)), product_path(product) %>
+					        	<%= link_to (image_tag product.image.url(:small)), product_path(product) %>
 					        	<div class="pacifico_white_scroller"><%= product.name %></div><br/>
 						    </div>
 						<% end %>
@@ -41,7 +41,20 @@
 	    		<h1>Random</h1>		
 		    		<% @products.shuffle.each do |product| %>		
 			    			<div>		      	
-					        	<%= link_to (image_tag product.image.url(:medium)), product_path(product) %>
+					        	<%= link_to (image_tag product.image.url(:small)), product_path(product) %>
+					        	<div class="pacifico_white_scroller"><%= product.name %></div><br/>
+						    </div>			  
+			        <% end %>
+			    </li>
+	      	</ul>
+		</div>
+		<div style="text-align:center;"
+		  	<ul id="menu">
+		    	<li id="left" class="sub">
+	    		<h1 class="arizonia_white">Random</h1>		
+		    		<% @products.shuffle.each do |product| %>		
+			    			<div>		      	
+					        	<%= link_to (image_tag product.image.url(:small)), product_path(product) %>
 					        	<div class="pacifico_white_scroller"><%= product.name %></div><br/>
 						    </div>			  
 			        <% end %>

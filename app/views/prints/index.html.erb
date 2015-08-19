@@ -1,29 +1,63 @@
-<p id="notice"><%= notice %></p>
+
 <div class="panel panel-default">
   <div class="panel-body">
+  	<p id="notice"><%= notice %></p>
   	<tr>
   		<td><%= link_to "Go to the Shop", products_path, class: "btn btn-default" %></td>
-		<td style="float: right;"><%= link_to "Post a Print", new_print_path, class: "btn btn-success" %></td>
+		<td style="float: right;"><%= link_to "Post a Print", new_print_path, class: "btn btn-warning" %></td>
 	</tr>
 
 	<br/>
 
 
 	<div style="text-align:center;">
-	  <h1 class="form_title" style="text-align:center;">Review</h1>
-	  <ul id="menu">
-	    <li class="sub">
-	      <% @prints.each do |print| %>
-	        <div class="col-sm-6 col-md-3">
-	          <div class="thumbnail">
-	            <%= link_to (image_tag print.image.url(:medium)), print_path(print) %>
-	            <%= print.name %>
+	  <h1 class="pacifico_purple_70" style="text-align:center;">Review</h1>
+	  <br/>
+	  <table style="float: left;">
+	  	<tr>
+			<td><div class="arizonia_black_60" style="text-align:center;"> Recent</div></td>
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+	  	<tr>
+	  	  <td>
+		    <ul id="menu">
+		      <li class="sub">
+		        <% @prints.sort_by(&:created_at).first(4).each do |print| %>
+		          <div class="col-sm-6 col-md-3">
+		            
+		            <%= link_to (image_tag print.image.url(:medium)), print_path(print) %>
 
-	          </div>
-	        </div>
-	      <% end %>
-	    </li>
-	  </ul>
+		          </div>
+		        <% end %>
+		      </li>
+		    </ul>
+		  </td>
+		</tr>
+		<tr>
+			<td><div class="arizonia_black_50" style="text-align:center;"> All</div></td>
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+
+
+		  <td>
+
+		    <ul id="menu">
+		      <li class="sub">
+		        <% @prints.each do |print| %>
+		          <div class="col-sm-6 col-md-3">
+		            
+		              <%= link_to (image_tag print.image.url(:small)), print_path(print) %>
+		            </div>
+		            
+		          </div>
+		        <% end %>
+		      </li>
+		    </ul>
+		  </td>
+		</tr>
+	  </table>
+	  <div></div>
 	</div>
   </div>
 </div>
