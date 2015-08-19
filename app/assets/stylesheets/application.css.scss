@@ -20,7 +20,7 @@
 
 
 /* blue = #07b4ed, fuschia = #ed1894,
-   purple = #8562a8, green = #699638 */
+   purple = #8562a8, green = #7bda15 */
 
 * {
     font-family: 'Orbitron', sans-serif;
@@ -29,7 +29,13 @@
 .splat-container {
 	width: 100%;
 }
-
+.btn-info {
+	font-size: 24px;
+	color: black;
+	font-family: 'Pacifico', cursive;
+	border-color: black;
+	background-color: white;
+}
 .btn-danger {
 	font-size: 24px;
 	font-family: 'Pacifico', cursive;
@@ -149,6 +155,11 @@ h1 {
 	font-family: 'Arizonia';
 	color: white;
 }
+.arizonia_black_40 {
+	font-family: 'Arizonia';
+	color: black;
+	font-size: 40px;
+}
 .arizonia_black_50 {
 	font-family: 'Arizonia';
 	color: black;
@@ -180,6 +191,11 @@ h1 {
 	color: black;
 	font-size: 40px;
 }
+.pacifico_black_50{
+	font-family: 'Pacifico', cursive;
+	color: black;
+	font-size: 40px;
+}
 .pacifico_purple_70{
 	font-family: 'Pacifico', cursive;
 	color: #8562a8;
@@ -193,6 +209,11 @@ h1 {
 }
 
 .tables{ border-collapse:collapse; table-layout:fixed;
+}
+.round {border-radius: 15px;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+
 }
 
 #left {

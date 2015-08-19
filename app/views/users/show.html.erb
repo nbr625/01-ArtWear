@@ -10,7 +10,7 @@
       			<%@user.prints.each do |print|%>
         			<div class="sub">
           				<div class="thumbnail">
-            				<%= link_to (image_tag print.image.url(:thumb), class: 'image'), print %>
+            				<%= link_to (image_tag print.image.url(:small), class: 'image'), print %>
             			</div>
             		</div>
             	<% end%>
@@ -20,7 +20,7 @@
       			<%@user.products.each do |product|%>
         			<div class="sub">
           				<div class="thumbnail">
-            				<%= link_to (image_tag product.image.url(:thumb), class: 'image'), product %>
+            				<%= link_to (image_tag product.image.url(:small), class: 'image'), product %>
             			</div>
             		</div>
             	<% end%>

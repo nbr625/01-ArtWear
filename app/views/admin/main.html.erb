@@ -1,86 +1,90 @@
 <br/>
-<table class="table table-hover" style="float: left;">
-	<tr><strong>Graphics with most Pledges</strong></tr>
-	<% @prints.sort_by(&:pledge_count).reverse.first(5).each do |print| %>	
+<div class="panel panel-default">
+  	<div class="panel-body">
+		<table class="table table-hover" style="float: left;">
+			<tr><strong>Graphics with most Pledges</strong></tr>
+			<% @prints.sort_by(&:pledge_count).reverse.first(5).each do |print| %>	
 
-	<tr>
-		<% if print.pledge_count > 0 %>
-			<td><%= link_to image_tag print.image.url(:thumb) %></td>
-			<td><%= link_to print.name, print_path(print) %>
-			<td><%= print.pledge_count %></td>
-			<td><%= link_to print.user.username, user_path(print.user) %></td>
-		<% end %>
-	<% end %>
-	</tr>
-</table>
-<br/>
-<br/>
-<div style="text-align:center;"><%= link_to "See All", admin_most_pledges_path, class: "btn btn-default" %></div>
-<br/>
-<table class="table table-hover" style="float: left;">
-	<tr><strong>Best Rated Graphics</strong></tr>
-	<% @prints.sort_by(&:average_review).reverse.first(5).each do |print| %>	
-	<tr>
-		<td><%= link_to image_tag print.image.url(:thumb) %></td>
-		<td><%= link_to print.name, print_path(print) %>
-		<td><%= print.average_review %></td>
-		<td><%= link_to print.user.username, user_path(print.user) %></td>
-	<% end %>
-	</tr>
-</table>
-<br/>
-<div style="text-align:center;"><%= link_to "See All", admin_best_rated_path, class: "btn btn-default" %></div>
-<br/>
-<table class="table table-hover" style="float: left;">
-	<tr><strong>Out of Stock<strong></tr>
-	<% @subproducts.first(5).each do |subproduct| %>
-	<tr>
-		<% if !subproduct.quantity? %>
-			<td><%= link_to image_tag subproduct.product.image.url(:thumb) %></td>
-			<td><%= link_to subproduct.size, product_path(subproduct.product) %></td>
-			<td> <%=link_to subproduct.product.name, product_path(subproduct.product) %> </td>
-			<td><%= link_to subproduct.product.user.username, user_path(subproduct.product.user)%></td>
-		<% end %>
-	<% end %>
-	</tr>
-	<% if @subproducts.where(quantity: 0).length == 0 %>
-		<td> All Items are in stock</td>
-	<% end %>
-	</tr>
-</table>
-<br/>
-<div style="text-align:center;"><%= link_to "See All", admin_out_of_stock_path, class: "btn btn-default" %></div>
-<br/>
-<table class="table table-hover" style="float: left;">
-	<tr><strong>Flagged Prints</strong></tr>
-	<% @prints.sort_by(&:flag_count).reverse.first(5).each do |print| %>	
-	<tr>
-		<% if print.flag_count > 0 %>
-			<td><%= link_to image_tag print.image.url(:thumb) %></td>
-			<td><%= link_to print.name, print_path(print) %></td>
-			<td><%= print.flag_count %></td>
-			<td><%= link_to print.user.username, user_path(print.user) %></td>
-		<% end %>
-	<% end %>
-	</tr>
-</table>
-<br/>
-<div style="text-align:center;"><%= link_to "See All", admin_flagged_prints_path, class: "btn btn-default" %></div>
-<br/>
-<table class="table" style="float: left;">
-	<tr><strong>Flagged Comments</strong></tr>
-	<% @reviews.sort_by(&:flag_count).reverse.first(5).each do |review| %>	
-	<tr>
-		<% if review.flag_count > 0 %>
-			<td><%= link_to image_tag review.print.image.url(:thumb) %></td>
-			<td><%= link_to review.print.name, print_path(review.print) %></td>
-			<td><%= review.flag_count %></td>
-			<td><%= link_to review.user.username, user_path(review.print.user) %></td>
-		<% end %>
-	<% end %>
-	</tr>
-</table>
-<br/>
-<div style="text-align:center;"><%= link_to "See All", admin_flagged_comments_path, class: "btn btn-default" %></div>
+			<tr>
+				<% if print.pledge_count > 0 %>
+					<td><%= link_to image_tag print.image.url(:thumb) %></td>
+					<td><%= link_to print.name, print_path(print) %>
+					<td><%= print.pledge_count %></td>
+					<td><%= link_to print.user.username, user_path(print.user) %></td>
+				<% end %>
+			<% end %>
+			</tr>
+		</table>
+		<br/>
+		<br/>
+		<div style="text-align:center;"><%= link_to "See All", admin_most_pledges_path, class: "btn btn-default" %></div>
+		<br/>
+		<table class="table table-hover" style="float: left;">
+			<tr><strong>Best Rated Graphics</strong></tr>
+			<% @prints.sort_by(&:average_review).reverse.first(5).each do |print| %>	
+			<tr>
+				<td><%= link_to image_tag print.image.url(:thumb) %></td>
+				<td><%= link_to print.name, print_path(print) %>
+				<td><%= print.average_review %></td>
+				<td><%= link_to print.user.username, user_path(print.user) %></td>
+			<% end %>
+			</tr>
+		</table>
+		<br/>
+		<div style="text-align:center;"><%= link_to "See All", admin_best_rated_path, class: "btn btn-default" %></div>
+		<br/>
+		<table class="table table-hover" style="float: left;">
+			<tr><strong>Out of Stock<strong></tr>
+			<% @subproducts.first(5).each do |subproduct| %>
+			<tr>
+				<% if !subproduct.quantity? %>
+					<td><%= link_to image_tag subproduct.product.image.url(:thumb) %></td>
+					<td><%= link_to subproduct.size, product_path(subproduct.product) %></td>
+					<td> <%=link_to subproduct.product.name, product_path(subproduct.product) %> </td>
+					<td><%= link_to subproduct.product.user.username, user_path(subproduct.product.user)%></td>
+				<% end %>
+			<% end %>
+			</tr>
+			<% if @subproducts.where(quantity: 0).length == 0 %>
+				<td> All Items are in stock</td>
+			<% end %>
+			</tr>
+		</table>
+		<br/>
+		<div style="text-align:center;"><%= link_to "See All", admin_out_of_stock_path, class: "btn btn-default" %></div>
+		<br/>
+		<table class="table table-hover" style="float: left;">
+			<tr><strong>Flagged Prints</strong></tr>
+			<% @prints.sort_by(&:flag_count).reverse.first(5).each do |print| %>	
+			<tr>
+				<% if print.flag_count > 0 %>
+					<td><%= link_to image_tag print.image.url(:thumb) %></td>
+					<td><%= link_to print.name, print_path(print) %></td>
+					<td><%= print.flag_count %></td>
+					<td><%= link_to print.user.username, user_path(print.user) %></td>
+				<% end %>
+			<% end %>
+			</tr>
+		</table>
+		<br/>
+		<div style="text-align:center;"><%= link_to "See All", admin_flagged_prints_path, class: "btn btn-default" %></div>
+		<br/>
+		<table class="table" style="float: left;">
+			<tr><strong>Flagged Comments</strong></tr>
+			<% @reviews.sort_by(&:flag_count).reverse.first(5).each do |review| %>	
+			<tr>
+				<% if review.flag_count > 0 %>
+					<td><%= link_to image_tag review.print.image.url(:thumb) %></td>
+					<td><%= link_to review.print.name, print_path(review.print) %></td>
+					<td><%= review.flag_count %></td>
+					<td><%= link_to review.user.username, user_path(review.print.user) %></td>
+				<% end %>
+			<% end %>
+			</tr>
+		</table>
+		<br/>
+		<div style="text-align:center;"><%= link_to "See All", admin_flagged_comments_path, class: "btn btn-default" %></div>
+	</div>
+</div>
 
 

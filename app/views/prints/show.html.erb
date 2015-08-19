@@ -1,5 +1,5 @@
-<div class="panel panel-default">
-  <div class="panel-body">
+<div class="panel panel-default" style="padding: 20px 20px 20px 20px;">
+  <div class="panel-body" style='overflow:hidden; padding: 10px ;'>
     <table>
       <tr>
         <td>
@@ -15,16 +15,16 @@
       </tr>
     </table>
     <br/>
-    <div class="row">
+    <div class="row" style="padding: 0px 0px 0px 30px;">
       <div>
         
         <p style="text-align: center;">
           <%= image_tag @print.image.url(:large) %>
         </p>
-        <p style="text-align: center;">
-          <strong><%= @print.name %></strong>
+        <p class="pacifico_black_50" style="text-align: center;">
+          <%= @print.name %>
         </p>
-        <p><strong>Description:</strong>
+        <p class="arizonia_black_40" style="text-align: center;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;</strong>
           <%= @print.description %></p>
         <table style="width: 100%;">
           <tr>
@@ -32,7 +32,7 @@
               <div class="star-rating" data-score= <%= @print.average_review %> ></div>
               <div><%= "#{@reviews.length} reviews" %></div>
           
-              <%= image_tag('heart_icon.jpg' , width: 30, height: 30) + "#{@print.pledges.length}"%>
+              <%= image_tag('heart_icon.jpg' , width: 50, height: 50) + "#{@print.pledges.length}"%>
             <td/>
             <td><%= link_to "Flag #{@print.flag_count}", flag_print_path(@print), method: :put, class: "btn btn-default"%></td>
           </tr>
@@ -45,21 +45,27 @@
       <%= link_to "Pledge", new_print_pledge_path(@print), class: "btn btn-danger"%>
       <br/><br/>
  
-      <div class="col-md-7 col-md-offset-1">
+      <div class="row" style="padding: 0px 0px 0px 10pxpx;">
+      
 
         <% if @reviews.blank? %>
           <h3>No reviews just yet, would you like to add the first?</h3>
         <% else %>
-          <table style="width: 100%;">
+          <table class="round" style="width: 90%; border-width: 5px;">
           <% @reviews.sort_by{|t| - t.created_at.to_i}.first(8).each do |review| %>
             <% @user = User.find(review.user_id)%>
-            <tr>
-              <td>
-                <div class="review_avatar"><%= link_to (image_tag @user.avatar.url(:thumb)), @user %></div>
-              </td>
-              <td style="color: grey;"><%= review.comment %></td>
+            <tr class="panel panel-default" >
+              <div class="panel" style=></div>
+                <td style="width: 20%;">
+                  <div class="review_avatar"><%= link_to (image_tag @user.avatar.url(:small)), @user %></div>
+                </td>
+
+                <td style="float: left; width: 80%; font-size: 20px; padding: 40px 0px 0px 20px;"><%= review.comment %></td>
+              </div>
             
             </tr>
+          </table>
+          <table>
               
 
             <tr>
@@ -73,8 +79,8 @@
             
 
               <% if current_user == @user %>
-                <td style="float: left;"><%= link_to "Change", edit_polymorphic_path([@print ,review]), class: "btn btn-info" %></td>                
-                <td style="float: left"><%= link_to 'Erase It', [@print, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
+                <td style="float: left;"><%= link_to "Change it", edit_polymorphic_path([@print ,review]), class: "btn btn-info" %></td>                
+                <td style="float: left"><%= link_to 'Erase it', [@print, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
                 <td style="float:right"><%= link_to "Flag #{review.flag_count}", flag_print_review_path(@print, review), method: :put, class: "btn btn-default" %></td>
                 
               <% end %>              

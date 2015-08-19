@@ -1,17 +1,22 @@
-<table class="table table-hover" style="float: left;">
-	<tr><strong>Graphics with most Pledges</strong></tr>
-	<% @prints.sort_by(&:pledge_count).reverse.each do |print| %>	
+<div class="panel panel-default">
+  	<div class="panel-body">
 
-	<tr>
-		<% if print.pledge_count > 0 %>
-			<td><%= link_to image_tag print.image.url(:thumb) %></td>
-			<td><%= link_to print.name, print_path(print) %>
-			<td><%= print.pledge_count %></td>
-			<td><%= link_to print.user.username, user_path(print.user) %></td>
-		<% end %>
-	<% end %>
-	</tr>
+		<table class="table table-hover" style="float: left;">
+			<tr><strong>Graphics with most Pledges</strong></tr>
+			<% @prints.sort_by(&:pledge_count).reverse.each do |print| %>	
 
-</table>
+			<tr>
+				<% if print.pledge_count > 0 %>
+					<td><%= link_to image_tag print.image.url(:thumb) %></td>
+					<td><%= link_to print.name, print_path(print) %>
+					<td><%= print.pledge_count %></td>
+					<td><%= link_to print.user.username, user_path(print.user) %></td>
+				<% end %>
+			<% end %>
+			</tr>
 
-<div><%= link_to "Back to Admin Main", admin_main_path, class: "btn btn-default" %></div>
+		</table>
+
+		<div><%= link_to "Back to Admin Main", admin_main_path, class: "btn btn-default" %></div>
+	</div>
+</div>

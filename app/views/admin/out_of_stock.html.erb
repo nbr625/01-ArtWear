@@ -1,18 +1,23 @@
-<table class="table table-hover" style="float: left;">
-	<tr><strong>Out of Stock<strong></tr>
-	<% @subproducts.each do |subproduct| %>
-	<tr>
-		<% if !subproduct.quantity? %>
-			<td><%= link_to image_tag subproduct.product.image.url(:thumb) %></td>
-			<td><%= link_to subproduct.size, product_path(subproduct.product) %></td>
-			<td> <%=link_to subproduct.product.name, product_path(subproduct.product) %> </td>
-			<td><%= link_to subproduct.product.user.username, user_path(subproduct.product.user)%></td>
-		<% end %>
-	<% end %>
-	</tr>
-	<% if @subproducts.where(quantity: 0).length == 0 %>
-		<td> All Items are in stock</td>
-	<% end %>
-	</tr>
-</table>
-<div><%= link_to "Back to Admin Main", admin_main_path, class: "btn btn-default" %></div>
+<div class="panel panel-default">
+  	<div class="panel-body">
+
+		<table class="table table-hover" style="float: left;">
+			<tr><strong>Out of Stock<strong></tr>
+			<% @subproducts.each do |subproduct| %>
+			<tr>
+				<% if !subproduct.quantity? %>
+					<td><%= link_to image_tag subproduct.product.image.url(:thumb) %></td>
+					<td><%= link_to subproduct.size, product_path(subproduct.product) %></td>
+					<td> <%=link_to subproduct.product.name, product_path(subproduct.product) %> </td>
+					<td><%= link_to subproduct.product.user.username, user_path(subproduct.product.user)%></td>
+				<% end %>
+			<% end %>
+			</tr>
+			<% if @subproducts.where(quantity: 0).length == 0 %>
+				<td> All Items are in stock</td>
+			<% end %>
+			</tr>
+		</table>
+		<div><%= link_to "Back to Admin Main", admin_main_path, class: "btn btn-default" %></div>
+	</div>
+</div>
