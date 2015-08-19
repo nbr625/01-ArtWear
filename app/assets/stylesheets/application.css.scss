@@ -22,9 +22,19 @@
 /* blue = #07b4ed, fuschia = #ed1894,
    purple = #8562a8, green = #7bda15 */
 
-* {
-    font-family: 'Orbitron', sans-serif;
- }
+
+
+.profile {
+
+   color: white;  /* Fallback: assume this color ON TOP of image */
+   background: url('background1.jpg') no-repeat;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   font-family: 'Pacifico', cursive;
+
+}
+
+
 
 .splat-container {
 	width: 100%;
@@ -174,6 +184,11 @@ h1 {
 .logo_pic:hover {
 	opacity: 0.7;
 }
+
+.typeface {
+    font-family: 'Special Elite', cursive;
+ }
+
 .arizonia_red {
 	font-family: 'Arizonia';
 	color: #07b4ed;

@@ -22,7 +22,7 @@
 	  	  <td>
 		    <ul id="menu">
 		      <li class="sub">
-		        <% @prints.sort_by(&:created_at).first(4).each do |print| %>
+		        <% @prints.sort_by(&:created_at).reverse.first(4).each do |print| %>
 		          <div class="col-sm-6 col-md-3">
 		            
 		            <%= link_to (image_tag print.image.url(:medium)), print_path(print) %>
@@ -59,17 +59,17 @@
 	  </table>
 	  <div style="background-color: white; width: 3%; float:left;">&nbsp;</div>
 	  <div style="float: left; width: 35%; padding: 10px; background-color: black; color: white;" >
-	  	<h1 >Why restrain art to frames?</h1>
-	  	<p>Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.Why restrain art to frames?</h1>
-	  	<p>Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.Why restrain art to frames?</h1>
-	  	<p>Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.</p>
+	  	<h1 style="font-size: 40px;">Why restrain art to frames?</h1>
+	  	<p class="typeface">Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.Why restrain art to frames?
+	  	Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.Why restrain art to frames?
+	  	Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.
 
 	  	<br/>
 
-	  	<h1 style="color: #8562a8;">Why restrain art to frames?</h1>
-	  	<p>Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.Why restrain art to frames?</h1>
-	  	<p>Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.Why restrain art to frames?</h1>
-	  	<p>Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.</p>
+	  	<h1 style="color: #8562a8; font-size: 40px;">Why restrain art to frames?</h1>
+	  	<p class="typeface">Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.Why restrain art to frames?
+	  	Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.Why restrain art to frames?
+	  	Art should be as free as the mind of their creators. Everything that comes in contact with the mind should be rendered into art. Cloths and shoes included. We worry too much about the designer cloth, never going further into what makes cloths truly enjoyable to wear; the aethetics, the feeling that it elicits upon the onlooker.
 	  </div>
 	</div>
   </div>
