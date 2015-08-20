@@ -23,6 +23,10 @@
    purple = #8562a8, green = #7bda15 */
 
 
+#front_banner {
+	background: url('background3.jpg');
+	width: 100%;
+}
 
 .profile {
 
@@ -228,6 +232,11 @@ h1 {
 .pacifico_white{
 	font-family: 'Pacifico', cursive;
 	color: #F0EED2;
+}
+.pacifico_black_30{
+	font-family: 'Pacifico', cursive;
+	color: black;
+	font-size: 30px;
 }
 .pacifico_black_40{
 	font-family: 'Pacifico', cursive;

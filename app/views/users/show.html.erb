@@ -1,10 +1,18 @@
 <div class="panel panel-default">
   	<div class="panel-body">
   		<div>
-			<h1 class="profile"><%= @user.username%></h2><br/>
-			<div><%= image_tag @user.avatar.url(:medium) %></div><br/><br/>
+			<h1 <em class="profile"><%= @user.username%></em></h1><br/>
+			<div><%= image_tag @user.avatar.url(:medium) %></div>
+      <br/>
+      <div><%= link_to "Edit", edit_user_registration_path, class: "btn btn-danger" %></div>
+      <br/><br/>
 			<h1 style="color: black;">&nbsp;&nbsp;Bio</h1><br/>
-			<div class="typeface" style="font-size: 18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.biography%></div><br/><br/>
+			<div class="typeface" style="font-size: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.biography%></div><br/><br/>
+      <h1 style="color:black">&nbsp;&nbsp;Last Review</h1>
+      <div class="typeface" style="font-size: 25px;">
+        <div><em class="pacifico_black_30 profile"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to @user.reviews.last.print.name, print_path(@user.reviews.last.print)%>:&nbsp;&nbsp;&nbsp;</strong></em><%=@user.reviews.last.comment%></div>
+      </div><br/><br/>
+
 			<h1 style="text-align: center;">Under Review</h1>
 			<ul class="slider5" id="menu">
       			<%@user.prints.each do |print|%>
@@ -23,14 +31,13 @@
             			<%= link_to (image_tag product.image.url(:small), class: 'image'), product %>
             		</div>
             	</div>
-            <% end%>
-
+            <% end %>
             </ul>
        		<h2></h2>
         </div>
 	</div>
-	<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-danger" %>
-	</div>
+	
+
 </div> 
 
 <script>
