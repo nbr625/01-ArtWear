@@ -1,5 +1,6 @@
 class PrintsController < ApplicationController
   before_action :set_print, only: [:show, :edit, :update, :destroy, :flag, :turn_into_product]
+  before_action :authenticate_user!, only: [:show, :new ]
   attr_accessor :edit
   
 

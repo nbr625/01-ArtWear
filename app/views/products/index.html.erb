@@ -1,10 +1,7 @@
-<div class="panel panel-default">
+<div class="panel panel-default" style="border-color: black;">
     <div style="background-color: black;" class="panel-body">
 
 		<p id="notice"><%= notice %></p>
-		<% if current_user.admin? %>
-			<%= link_to 'Add New Product', new_product_path, class: "btn btn-success" %>
-		<% end %>
 		<h1 class="pacifico_white" style="font-size: 70px; text-align:center;">Shop</h1><br/>
 		<div style="text-align:center;"
 		  	<ul id="menu">
