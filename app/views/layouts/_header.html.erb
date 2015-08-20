@@ -20,7 +20,7 @@
         <% end %>
       </ul>
     </div>
-    <div class="nav navbar-nav navbar-right"><%= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.subtotal} )", cart_path, class: "btn-lg btn-danger"%></div>
+    <div class="nav navbar-nav navbar-right"><%= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.subtotal} )", cart_path, class: "btn btn-danger"%></div>
 
     </div>
     
