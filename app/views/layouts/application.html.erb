@@ -29,32 +29,28 @@
 </head>
 
 <body>
-  <div id="wrap">
-    <%= render 'layouts/header' %>
-  	<div class="container" style="width:80%; float: left;">
-      <br/>
 
-      
-  		<%= yield %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p> 
+  <%= render 'layouts/header' %>
+	<div class="container" style="width:80%; float: left;">
+    <br/>
 
-    </div>
-    <div style="width:20%; float:left;">
-      <div>
-        <aside>
-          <li><%= link_to ' ', new_print_path, class: "submit_btn"%></li>
-          <li><%= link_to " ", prints_path, class: "review_btn" %></li>
-          <li><%= link_to ' ', products_path, class: "shop_btn" %></li>
+    
+		<%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> 
 
-        <aside>
-      </div>
-    </div>
-    <div id="push"></div>
   </div>
-  <div id="footer">
-    <p>footer content </p>
+  <div style="width:20%; float:left;">
+    <div>
+      <aside>
+        <li><%= link_to ' ', new_print_path, class: "submit_btn"%></li>
+        <li><%= link_to " ", prints_path, class: "review_btn" %></li>
+        <li><%= link_to ' ', products_path, class: "shop_btn" %></li>
+
+      <aside>
+    </div>
   </div>
+    
 
 </body>
 </html>
