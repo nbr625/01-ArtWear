@@ -132,6 +132,7 @@
     height: 388px;
     background: url(reviewupright1.jpg);
     transition: all .3s ease-in;
+    background-size: 100% 100%;
 }
 .review_btn:hover {
     background: url('reviewupright2.jpg');
@@ -147,6 +148,7 @@
     height: 388px;
     background: url(submit_upright_1.jpg);
     transition: all .3s ease-in;
+    background-size: 100% 100%;
 }
 
 .submit_btn:hover {
@@ -163,6 +165,7 @@
     height: 388px;
     background: url(shop_upright_1.jpg);
     transition: all .3s ease-in;
+    background-size: 100% 100%;
 }
 
 .shop_btn:hover {
@@ -182,10 +185,11 @@ h1 {
 #banner_pic {
 	float: left;
 	width: 480px;
-	min-width: 300px;
 	height: 688px;
 	background-image: url('banner3.jpg');
 	transition: all .5s ease-in;
+	background-size: 100% 100%;
+	text-align: center;
 
 }
 #banner_pic:hover {
@@ -535,3 +539,38 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 	font-size: .85em;
 	padding: 10px;
 }
+@media screen and (max-width: 800px) {
+
+    #banner_pic {
+    	height: 573px;
+    	width: 400px;
+    };
+    .submit_btn {
+    	width: 150px;
+    	height: 242px;
+    };
+    .review_btn {
+    	width: 150px;
+    	height: 242px;
+    };
+    .shop_btn {
+    	width: 150px;
+    	height: 242px;
+    };
+
+
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+    #banner_pic {
+    	height: 430px;
+    	width: 300px;
+    };
+
+
+}
+
+
