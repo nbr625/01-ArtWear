@@ -51,6 +51,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'rspec', '~> 3.3.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
