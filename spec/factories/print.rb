@@ -9,6 +9,8 @@ FactoryGirl.define do
     f.average_review {Faker::Number.between(1, 5)}
     f.flag_count {Faker::Number.between(0, 10)}
     f.pledge_count {Faker::Number.between(0, 10)}
+    f.created_at {Faker::Time.between(DateTime.now - 1, DateTime.now)}
+    f.updated_at {Faker::Time.between(DateTime.now - 1, DateTime.now)}
 
 
   end

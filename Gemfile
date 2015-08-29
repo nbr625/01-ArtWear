@@ -33,6 +33,14 @@ gem 'angularjs-rails', '~> 1.2.25'
 gem 'responders', '~> 2.0'
 gem 'carrierwave'
 gem 'foreman', '~> 0.78.0'
+
+#for autotesting feature
+gem 'ZenTest', '~> 4.11.0'
+gem 'autotest-rails', '~> 4.2.1'
+gem 'autotest-fsevent', '~> 0.2.10'
+gem 'autotest-growl', '~> 0.2.16'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -52,7 +60,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec', '~> 3.3.0'
+  gem 'rspec-rails', '~> 3.3.3'
   gem 'factory_girl_rails', '~> 4.5.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -65,6 +73,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rspec-rails', '~> 3.3.3'
   gem 'faker', '~> 1.5.0'
   gem 'capybara', '~> 2.5.0'
   gem 'guard-rspec', '~> 4.6.4'

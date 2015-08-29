@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe CartController do
-	describe "GET #show" do
+describe CartsController, type: :controller do
+	context "GET #show" do
 
 		it "renders the show view" do
 			get :show

@@ -16,11 +16,11 @@ describe PledgesController do
 		context "with attributes within parameters" do
 			it "saves the pledge in the database" do
 				expect{
-					post :create, pledge: Factory.attributes_for(:pledge)
+					post :create, pledge: FactoryGirl.build.attributes_for(:pledge)
 				}.to change(pledge,:count).by(1)
 			end
 			it "redirect to the pledge index template" do
-				post :create, pledge: Factory.attributes_for(:pledge)
+				post :create, pledge: FactoryGirl.build.attributes_for(:pledge)
 				response.should redirect_to pledge.last
 			end
 		end
@@ -28,11 +28,11 @@ describe PledgesController do
 		context "with invalid attributes" do
 			it "does not save the new pledge to the database" do
 				expect{
-					post :create, pledge: Factory.attributes_for(:invalid_pledge)
+					post :create, pledge: FactoryGirl.build.attributes_for(:invalid_pledge)
 				}.to_not change(pledge, :pledge)
 			end
 			it "re-renders the :new template" do
-				post :create, pledge: Factory.attributes_for(:invalid_pledge)
+				post :create, pledge: FactoryGirl.build.attributes_for(:invalid_pledge)
 				response.should render_template :new
 			end
 		end

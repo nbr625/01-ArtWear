@@ -7,7 +7,7 @@ describe SubproductsController do
 		context "with attributes within parameters" do
 			it "saves the subproduct in the database" do
 				expect{
-					post :create, subproduct: Factory.attributes_for(:subproduct)
+					post :create, subproduct: FactoryGirl.build.attributes_for(:subproduct)
 				}.to change(Subproduct,:count).by(1)
 			end
 		end
@@ -15,11 +15,11 @@ describe SubproductsController do
 		context "with invalid attributes" do
 			it "does not save the new subproduct to the database" do
 				expect{
-					post :create, subproduct: Factory.attributes_for(:invalid_subproduct)
+					post :create, subproduct: FactoryGirl.build.attributes_for(:invalid_subproduct)
 				}.to_not change(Subproduct, :subproduct)
 			end
 			it "re-renders the :new template" do
-				post :create, subproduct: Factory.attributes_for(:invalid_subproduct)
+				post :create, subproduct: FactoryGirl.build.attributes_for(:invalid_subproduct)
 				response.should render_template :new
 			end
 		end
@@ -27,25 +27,25 @@ describe SubproductsController do
 
 	describe "GET #edit" do
 		it "renders the :edit template" do
-			get :edit, id: Factory(:subproduct)
+			get :edit, id: FactoryGirl.build(:subproduct)
 			response.should render_template :edit
 		end
 	end
 
 	describe "PUT update" do
 		before :each do
-			@subproduct = Factory(:subproduct, size: "medium", price: 14.99)
+			@subproduct = FactoryGirl.build(:subproduct, size: "medium", price: 14.99)
 		end
 
 		context "valid attributes" do
 			it "located the requested @subproduct" do
-				put :update, id: @subproduct, subproduct: Factory.attributes_for(:subproduct)
+				put :update, id: @subproduct, subproduct: FactoryGirl.build.attributes_for(:subproduct)
 				assigns(:subproduct).should eq(@subproduct)
 			end
 
 			it "changes @subproduct's attributes" do
 				put :update, id: @subproduct,
-					subproduct: Factory.attributes_for(:subproduct, size: "medium", price: 14.99)
+					subproduct: FactoryGirl.build.attributes_for(:subproduct, size: "medium", price: 14.99)
 				end
 			end
 
@@ -54,14 +54,14 @@ describe SubproductsController do
 		context "invalid attributes" do
 
 			it "located the appropiarte @subproduct" do
-				put :update, id: @subproduct, subproduct: Factory.attributes_for(:invalid_subproduct)
+				put :update, id: @subproduct, subproduct: FactoryGirl.build.attributes_for(:invalid_subproduct)
 				assigns(:subproduct).should eq(@subproduct)
 			end
 
 			it "does not change @subproduct's attributes" do
 
 				put :update, id: @subproduct,
-					subproduct: Factory.attributes_for(:subproduct, size: "medium", price: nil)
+					subproduct: FactoryGirl.build.attributes_for(:subproduct, size: "medium", price: nil)
 				@subproduct.reload
 				@subproduct.size.should_not eq("medium")
 				@subproduct.price.should_not eq("14.99")
@@ -74,7 +74,7 @@ describe SubproductsController do
 	describe 'Delete destroy' do
 
 		before :each do
-			@subproduct = Factory(:subproduct)
+			@subproduct = FactoryGirl.build(:subproduct)
 		end
 
 		it "deletes the subproducts" do
