@@ -28,11 +28,10 @@ describe UsersController do
 	end
 
 	describe "GET #new" do
-		it "assigns a new user to @user" do
-			get :new
-			assigns(:user).phones.map{ |p| p.phone_type }.should eq %w
+		it "renders the :new template" do
+			get :new, id: Factory(:user)
+			response.should render_template :new
 		end
-		it "renders the :new template" 
 	end
 
 	describe "POST #create" do
@@ -125,7 +124,7 @@ describe UsersController do
 
 		it "redirects to users#index" do
 			delete :destroy, id: @user
-			response.should redirect_to users_path
+			response.should redirect_to root
 		end
 	end
 

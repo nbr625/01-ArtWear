@@ -23,7 +23,7 @@ describe Product do
   	end
 
   	it "should not allow duplicate names per product" do
-  		prodcut = Factory(:product)
+  		product = Factory(:product)
   		Factory(:name, product: product, name: "Masterpiece")
   		Factory.build(:name, product: product, name: "Masterpiece").should_not be_valid
   	end

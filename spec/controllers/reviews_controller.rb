@@ -16,11 +16,10 @@ describe ReviewsController do
 
 
 	describe "GET #new" do
-		it "assigns a new Review to @review" do
-			get :new
-			assigns(:review).phones.map{ |p| p.phone_type }.should eq %w
+		it "renders the :new template" do
+			get :new, id: Factory(:review)
+			response.should render_template :new
 		end
-		it "renders the :new template" 
 	end
 
 	describe "POST #create" do
@@ -69,7 +68,7 @@ describe ReviewsController do
 
 			it "redirect to the updated review" do
 				put :update, id: @review, review: Factory.attributes_for(:review)
-				response.should redirect_to @review
+				response.should redirect_to @print
 			end
 
 		end
@@ -113,7 +112,7 @@ describe ReviewsController do
 
 		it "redirects to reviews#index" do
 			delete :destroy, id: @review
-			response.should redirect_to reviews_path
+			response.should redirect_to @review
 		end
 	end
 

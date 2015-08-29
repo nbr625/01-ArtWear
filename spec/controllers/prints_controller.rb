@@ -28,11 +28,10 @@ describe PrintsController do
 	end
 
 	describe "GET #new" do
-		it "assigns a new Print to @print" do
-			get :new
-			assigns(:print).phones.map{ |p| p.phone_type }.should eq %w
+		it "renders the :new template" do
+			get :new, id: Factory(:print)
+			response.should render_template :new
 		end
-		it "renders the :new template" 
 	end
 
 	describe "POST #create" do

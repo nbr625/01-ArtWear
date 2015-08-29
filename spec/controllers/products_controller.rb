@@ -28,11 +28,10 @@ describe ProductsController do
 	end
 
 	describe "GET #new" do
-		it "assigns a new Product to @product" do
-			get :new
-			assigns(:product).phones.map{ |p| p.phone_type }.should eq %w
+		it "renders the :new template" do
+			get :new, id: Factory(:product)
+			response.should render_template :new
 		end
-		it "renders the :new template" 
 	end
 
 	describe "POST #create" do
