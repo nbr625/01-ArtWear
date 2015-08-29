@@ -8,27 +8,38 @@ describe ProductsController do
 			assigns(:products).should eq([product])
 		end
 
-		it "renders the index view" do
+		it "renders the index view if user signed in" do
+			current_user = Factory(:user)
 			get :index
 			response.should render_template :index
 		end
 	end
 
 	describe "GET #show" do
+		it "should redirect to root if the user is not signed in" do
+			current_user = nil
+			response.should redirect_to(root_url)
+		end
 		it "it funnels the right product to the @product variable"
 			product = Factory(:product)
 			get :show, id: product
 			assigns(:product).should eq(product)
 		end
 
-		it "renders the :show template" 
+		it "renders the :show template if user signed in"
+			current_user = Factory(:user) 
 			get :show, id: Factory(:product)
 			response.should render_template :show
 		end
 	end
 
 	describe "GET #new" do
-		it "renders the :new template" do
+		it "should redirect to root if the user is not admin" do
+			user = Factory(:user, admin: false)
+			response.should redirect_to(root_url)
+		end
+		it "renders the :new template if user is admin" do
+			user = Factory(user, admin: true)
 			get :new, id: Factory(:product)
 			response.should render_template :new
 		end

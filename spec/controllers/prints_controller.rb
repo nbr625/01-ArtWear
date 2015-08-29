@@ -25,6 +25,10 @@ describe PrintsController do
 			get :show, id: Factory(:print)
 			response.should render_template :show
 		end
+		it "should redirect to root if the user is not signed in" do
+			current_user = nil
+			response.should redirect_to(root_url)
+		end
 	end
 
 	describe "GET #new" do
@@ -32,9 +36,18 @@ describe PrintsController do
 			get :new, id: Factory(:print)
 			response.should render_template :new
 		end
+		it "should redirect to root if the user is not signed in" do
+			current_user = nil
+			response.should redirect_to(root_url)
+		end
 	end
 
 	describe "POST #create" do
+
+		it "should redirect to root if the user is not signed in" do
+			current_user = nil
+			response.should redirect_to(root_url)
+		end
 
 		context "with attributes within parameters" do
 			it "saves the print in the database" do
@@ -46,6 +59,7 @@ describe PrintsController do
 				post :create, print: Factory.attributes_for(:print)
 				response.should redirect_to Print.last
 			end
+
 		end
 
 		context "with invalid attributes" do
@@ -62,6 +76,10 @@ describe PrintsController do
 	end
 
 	describe "PUT update" do
+		it "should redirect to root if the user is not signed in" do
+			current_user = nil
+			response.should redirect_to(root_url)
+		end
 		before :each do
 			@print = Factory(:print, name: "Magnus Opus", description: "My pride and joy.")
 		end

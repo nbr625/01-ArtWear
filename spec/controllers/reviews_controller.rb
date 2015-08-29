@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe ReviewsController do
+	it "should redirect to root if the user is not signed in" do
+		current_user = nil
+		response.should redirect_to(root_url)
+	end
 	describe "GET #index" do
 		it "iterates all then reviews into an array" do
 			review = Factory(:review)
@@ -8,7 +12,8 @@ describe ReviewsController do
 			assigns(:reviews).should eq([review])
 		end
 
-		it "renders the index view" do
+		it "renders the index view if user signed in" do
+			current_user = Factory(:user)
 			get :index
 			response.should render_template :index
 		end
@@ -16,7 +21,12 @@ describe ReviewsController do
 
 
 	describe "GET #new" do
-		it "renders the :new template" do
+		it "should redirect to root if the user is not signed in" do
+			current_user = nil
+			response.should redirect_to(root_url)
+		end
+		it "renders the :new template if user signed in" do
+			current_user = Factory(:user)
 			get :new, id: Factory(:review)
 			response.should render_template :new
 		end
@@ -83,7 +93,7 @@ describe ReviewsController do
 			it "does not change @review's attributes" do
 
 				put :update, id: @review,
-					review: Factory.attributes_for(:review, rating: 4, description: nil)
+					review: Factory.attributes_for(:review, rating: 4, comment: nil)
 				@review.reload
 				@review.rating.should_not eq(4)
 				@review.comment.should_not eq("It's okay")

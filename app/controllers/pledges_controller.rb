@@ -7,9 +7,6 @@ class PledgesController < ApplicationController
     @pledge = current_user.pledges.build
   end
 
-  def thank_you    
-  end
-
 
   def create
     @pledge = current_user.pledges.build(pledge_params)

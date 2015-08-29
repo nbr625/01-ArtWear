@@ -95,7 +95,7 @@ describe UsersController do
 			it "does not change @user's attributes" do
 
 				put :update, id: @user,
-					user: Factory.attributes_for(:user, username: "Nicolas Rives", creator: nil)
+					user: Factory.attributes_for(:user, username: "Nicolas Rives", email: nil)
 				@user.reload
 				@user.username.should_not eq("Nicolas Rivers")
 				@user.email.should_not eq("niberrizbe@hotmail.com")
