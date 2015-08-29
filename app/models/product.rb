@@ -6,8 +6,10 @@ class Product < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :print
 	has_many :reviews, dependent: :destroy
-	has_many :products
 	has_many :subproducts, dependent: :destroy
+	validates :name,  presence: true
+	validates :description,  presence: true
+	validates :creator,  presence: true
 	
 
 

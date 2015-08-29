@@ -8,6 +8,5 @@ FactoryGirl.define do
     f.product_id {Faker::Number.between(1, 30)}
     f.print_id {Faker::Number.between(1, 30)}
     f.flag_count {{Faker::Number.between(0, 10)}}
-
   end
 end

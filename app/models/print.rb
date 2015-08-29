@@ -9,6 +9,11 @@ class Print < ActiveRecord::Base
 	has_many :users, through: :pledges
 	has_one :product
 
+	validates :name,  presence: true
+	validates :description,  presence: true
+	validates :product,  presence: true
+
+
 	def average_review
 		reviews = Review.where(print_id: self.id)
 		if reviews.blank?

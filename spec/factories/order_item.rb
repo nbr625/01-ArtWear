@@ -1,6 +1,6 @@
 require 'faker'
 FactoryGirl.define do
-  factory :order do |f|
+  factory :order_item do |f|
     f.subproduct_id f.user_id {Faker::Number.between(1, 30)}
     f.order_id {Faker::Number.between(1, 30)}  
     f.user_id {Faker::Number.between(1, 30)}

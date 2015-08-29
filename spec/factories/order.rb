@@ -1,7 +1,7 @@
 require 'faker'
 
 FactoryGirl.define do
-  factory :order_item do |f|
+  factory :order do |f|
     f.subtotal {Faker::Number.decimal(2)}
     f.tax {Faker::Number.decimal(2)}
     f.shipping {Faker::Number.decimal(2)}
