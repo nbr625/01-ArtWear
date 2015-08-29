@@ -8,6 +8,8 @@ FactoryGirl.define do
     f.user_id {Faker::Number.between(1, 30)}
     f.average_review {Faker::Number.between(1, 5)}
     f.flag_count {Faker::Number.between(0, 10)}
-    f.pledge_count {{Faker::Number.between(0, 10)}}
+    f.pledge_count {Faker::Number.between(0, 10)}
+
+
   end
 end

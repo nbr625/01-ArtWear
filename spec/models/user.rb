@@ -15,7 +15,7 @@ describe User do
   		Factory.build(:email, user: user, email: "niberrizbe@gmail.com").should_not be_valid
   	end
 
-  	it "should not allow duplicate usernames per contact" do
+  	it "should not allow duplicate usernames per user" do
   		user = Factory(:user)
   		Factory(:username, user: user, username: "Kight Kolas")
   		Factory.build(:username, user: user, username: "Kight Kolas").should_not be_valid

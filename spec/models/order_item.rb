@@ -13,12 +13,17 @@ describe OrderItem do
   	end
 
 
-
   	it "should not exist without an subproduct" do
   		Factory.build(:order_item, subproduct_id: nil).should_not be_valid
   	end
   	it "should not exist without an order" do
   		Factory.build(:order_item, order_id: nil).should_not be_valid
+  	end
+  	
+
+  	it "should return total price" do
+  		order_item = Factory.build(unit_price: 14.99, quantity: 2)
+  		order_item.total_price.should == 29.98
   	end
 	
 end

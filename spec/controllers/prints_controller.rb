@@ -1,0 +1,132 @@
+require 'spec_helper'
+
+describe PrintsController do
+	describe "GET #index" do
+		it "iterates all then prints into an array" do
+			print = Factory(:print)
+			get :index
+			assigns(:prints).should eq([print])
+		end
+
+		it "renders the index view" do
+			get :index
+			response.should render_template :index
+		end
+	end
+
+	describe "GET #show" do
+		it "it funnels the right print to the @print variable"
+			print = Factory(:print)
+			get :show, id: print
+			assigns(:print).should eq(print)
+		end
+
+		it "renders the :show template" 
+			get :show, id: Factory(:print)
+			response.should render_template :show
+		end
+	end
+
+	describe "GET #new" do
+		it "assigns a new Print to @print" do
+			get :new
+			assigns(:print).phones.map{ |p| p.phone_type }.should eq %w
+		end
+		it "renders the :new template" 
+	end
+
+	describe "POST #create" do
+
+		context "with attributes within parameters" do
+			it "saves the print in the database" do
+				expect{
+					post :create, print: Factory.attributes_for(:print)
+				}.to change(Print,:count).by(1)
+			end
+			it "redirect to the Print index template" do
+				post :create, print: Factory.attributes_for(:print)
+				response.should redirect_to Print.last
+			end
+		end
+
+		context "with invalid attributes" do
+			it "does not save the new print to the database" do
+				expect{
+					post :create, print: Factory.attributes_for(:invalid_print)
+				}.to_not change(Print, :print)
+			end
+			it "re-renders the :new template" do
+				post :create, print: Factory.attributes_for(:invalid_print)
+				response.should render_template :new
+			end
+		end
+	end
+
+	describe "PUT update" do
+		before :each do
+			@print = Factory(:print, name: "Magnus Opus", description: "My pride and joy.")
+		end
+
+		context "valid attributes" do
+			it "located the requested @print" do
+				put :update, id: @print, print: Factory.attributes_for(:print)
+				assigns(:print).should eq(@print)
+			end
+
+			it "changes @print's attributes" do
+				put :update, id: @print,
+					print: Factory.attributes_for(:print, name: "Magnus Opus", description: "My pride and joy.")
+				end
+			end
+
+			it "redirect to the updated print" do
+				put :update, id: @print, print: Factory.attributes_for(:print)
+				response.should redirect_to @print
+			end
+
+		end
+
+		context "invalid attributes" do
+
+			it "located the appropiarte @print" do
+				put :update, id: @print, print: Factory.attributes_for(:invalid_print)
+				assigns(:print).should eq(@print)
+			end
+
+			it "does not change @print's attributes" do
+
+				put :update, id: @print,
+					print: Factory.attributes_for(:print, name: "Magnus Opus", description: nil)
+				@print.reload
+				@print.name.should_not eq("Magnus Opus")
+				@print.description.should_not eq("My pride and joy.")
+			end
+
+			it "re-renders the edit method" do
+				put :update, id: @print, print: Factory.attributes_for(:invalid_print)
+				response.should render_template :edit
+			end
+
+		end		
+
+	end
+
+	describe 'Delete destroy' do
+
+		before :each do
+			@print = Factory(:print)
+		end
+
+		it "deletes the prints" do
+			expect{
+				delete :destroy, id: @print
+			}.to change(Print, :count).by(-1)
+		end
+
+		it "redirects to prints#index" do
+			delete :destroy, id: @print
+			response.should redirect_to prints_path
+		end
+	end
+
+end

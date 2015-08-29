@@ -9,7 +9,7 @@ class Print < ActiveRecord::Base
 	has_many :users, through: :pledges
 	has_one :product
 
-	validates :name,  presence: true
+	validates :name,  presence: true, uniqueness: true
 	validates :description,  presence: true
 	validates :product,  presence: true
 

@@ -8,5 +8,8 @@ describe Order do
   	it "should not exist without an order_status" do
   		Factory.build(:order, order_status_id: nil).should_not be_valid
   	end
+
+  	
+
 	
 end
