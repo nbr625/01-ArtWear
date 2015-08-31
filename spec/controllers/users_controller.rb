@@ -1,12 +1,12 @@
 require 'spec_helper'
 require 'rails_helper'
+require 'devise'
 
 describe UsersController, type: :controller do
 	describe "GET #index" do
 		it "iterates all then users into an array" do
-			user = User.create
 			get :index
-			assigns(:users).should eq([user])
+			assigns(:users).should eq(User.all)
 		end
 
 		it "renders the index view" do
@@ -17,20 +17,20 @@ describe UsersController, type: :controller do
 
 	describe "GET #show" do
 		it "it funnels the right user to the @user variable" do 
-			user = FactoryGirl.build(:user)
-			get :show, id: user
+			user = build(:user)
+			get :show, id: user.id
 			assigns(:user).should eq(user)
 		end
 
 		it "renders the :show template" do
-			get :show, id: FactoryGirl.build(:user)
+			user = build(:user)
+			get :show, id: user.id
 			response.should render_template :show
 		end
 	end
 
 	describe "GET #new" do
 		it "renders the :new template" do
-			get :new, id: FactoryGirl.build(:user)
 			response.should render_template :new
 		end
 	end
@@ -76,7 +76,6 @@ describe UsersController, type: :controller do
 			it "changes @user's attributes" do
 				put :update, id: @user,
 					user: FactoryGirl.build.attributes_for(:user, username: "Nicolas Rives", email: "niberrizbe@gmail.com")
-				end
 			end
 
 			it "redirect to the updated user" do

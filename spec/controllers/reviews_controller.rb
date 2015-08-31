@@ -8,9 +8,8 @@ describe ReviewsController do
 	end
 	describe "GET #index" do
 		it "iterates all then reviews into an array" do
-			review = FactoryGirl.build(:review)
 			get :index
-			assigns(:reviews).should eq([review])
+			assigns(:reviews).should eq(Review.all)
 		end
 
 		it "renders the index view if user signed in" do
@@ -74,7 +73,6 @@ describe ReviewsController do
 			it "changes @review's attributes" do
 				put :update, id: @review,
 					review: FactoryGirl.build.attributes_for(:review, rating: 4, comment: "It's okay")
-				end
 			end
 
 			it "redirect to the updated review" do

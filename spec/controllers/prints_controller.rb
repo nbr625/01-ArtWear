@@ -1,12 +1,11 @@
 require 'spec_helper'
 require 'rails_helper'
 
-describe PrintsController do
+describe PrintsController, type: :controller do
 	describe "GET #index" do
 		it "iterates all then prints into an array" do
-			print = FactoryGirl.build(:print)
 			get :index
-			assigns(:prints).should eq([print])
+			assigns(:prints).should eq(Print.all)
 		end
 
 		it "renders the index view" do
@@ -22,7 +21,7 @@ describe PrintsController do
 			assigns(:print).should eq(print)
 		end
 
-		it "renders the :show template" 
+		it "renders the :show template" do
 			get :show, id: FactoryGirl.build(:print)
 			response.should render_template :show
 		end

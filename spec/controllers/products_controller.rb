@@ -4,44 +4,39 @@ require 'rails_helper'
 describe ProductsController do
 	describe "GET #index" do
 		it "iterates all then products into an array" do
-			product = FactoryGirl.build(:product)
 			get :index
-			assigns(:products).should eq([product])
+			assigns(:products).should eq(Product.all)
 		end
 
 		it "renders the index view if user signed in" do
-			current_user = FactoryGirl.build(:user)
 			get :index
 			response.should render_template :index
 		end
 	end
 
 	describe "GET #show" do
-		it "should redirect to root if the user is not signed in" do
-			current_user = nil
-			response.should redirect_to(root_url)
-		end
+
 		it "it funnels the right product to the @product variable" do
-			product = FactoryGirl.build(:product)
-			get :show, id: product
+			product = create(:product)
+			get :show, id: product.id
 			assigns(:product).should eq(product)
 		end
 
 		it "renders the :show template if user signed in" do
-			current_user = FactoryGirl.build(:user) 
-			get :show, id: FactoryGirl.build(:product)
+			product = build(:product)
+			get :show, id: product.id
 			response.should render_template :show
 		end
 	end
 
 	describe "GET #new" do
 		it "should redirect to root if the user is not admin" do
-			user = FactoryGirl.build(:user, admin: false)
+			user = build(:user, admin: false)
 			response.should redirect_to(root_url)
 		end
 		it "renders the :new template if user is admin" do
-			user = FactoryGirl.build(user, admin: true)
-			get :new, id: FactoryGirl.build(:product)
+			user = build(user, admin: true)
+			get :new, id: build(:product)
 			response.should render_template :new
 		end
 	end
@@ -87,7 +82,6 @@ describe ProductsController do
 			it "changes @product's attributes" do
 				put :update, id: @product,
 					product: FactoryGirl.build.attributes_for(:product, name: "Masterpiece", creator: "Knight Kolas")
-				end
 			end
 
 			it "redirect to the updated product" do
@@ -130,12 +124,12 @@ describe ProductsController do
 
 		it "deletes the products" do
 			expect{
-				delete :destroy, id: @product
+				delete :destroy, id: @product.id
 			}.to change(Product, :count).by(-1)
 		end
 
 		it "redirects to products#index" do
-			delete :destroy, id: @product
+			delete :destroy, id: @product.id
 			response.should redirect_to(products_ulr)
 		end
 	end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'rails_helper'
-RSpec.describe WelcomeController, :type => :controller do
+describe WelcomeController do
 	describe "GET #index" do
 
 		it "renders the index view" do

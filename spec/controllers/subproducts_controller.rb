@@ -1,15 +1,14 @@
 require 'spec_helper'
 require 'rails_helper'
 
-describe SubproductsController do
-
+describe SubproductsController, type: :c do
 	describe "POST #create" do
 
 		context "with attributes within parameters" do
 			it "saves the subproduct in the database" do
 				expect{
 					post :create, subproduct: FactoryGirl.build.attributes_for(:subproduct)
-				}.to change(Subproduct,:count).by(1)
+				}.to change(Subproduct).length.by(1)
 			end
 		end
 
@@ -26,14 +25,8 @@ describe SubproductsController do
 		end
 	end
 
-	describe "GET #edit" do
-		it "renders the :edit template" do
-			get :edit, id: FactoryGirl.build(:subproduct)
-			response.should render_template :edit
-		end
-	end
 
-	describe "PUT update" do
+	describe "PUT #update" do
 		before :each do
 			@subproduct = FactoryGirl.build(:subproduct, size: "medium", price: 14.99)
 		end
@@ -47,7 +40,6 @@ describe SubproductsController do
 			it "changes @subproduct's attributes" do
 				put :update, id: @subproduct,
 					subproduct: FactoryGirl.build.attributes_for(:subproduct, size: "medium", price: 14.99)
-				end
 			end
 
 		end
@@ -61,8 +53,7 @@ describe SubproductsController do
 
 			it "does not change @subproduct's attributes" do
 
-				put :update, id: @subproduct,
-					subproduct: FactoryGirl.build.attributes_for(:subproduct, size: "medium", price: nil)
+				put :update, id: @subproduct, subproduct: FactoryGirl.build.attributes_for(:subproduct, size: "medium", price: nil)
 				@subproduct.reload
 				@subproduct.size.should_not eq("medium")
 				@subproduct.price.should_not eq("14.99")
@@ -72,16 +63,17 @@ describe SubproductsController do
 
 	end
 
-	describe 'Delete destroy' do
+	describe 'Delete #destroy' do
 
-		before :each do
-			@subproduct = FactoryGirl.build(:subproduct)
-		end
+		@subproduct = FactoryGirl.build(:subproduct)
 
-		it "deletes the subproducts" do
-			expect{
-				delete :destroy, id: @subproduct
-			}.to change(Subproduct, :count).by(-1)
+		context "valid delete" do
+
+			it "deletes the subproducts" do
+				expect{
+					delete :destroy, id: @subproduct
+				}.to change(Subproduct, :count).by(-1)
+			end
 		end
 
 	end

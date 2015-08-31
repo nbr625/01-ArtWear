@@ -1,12 +1,12 @@
-require 'faker'
+
 
 FactoryGirl.define do
   factory :subproduct do |f|
-    f.quantity {Faker::Number.between(1, 10)}
+    f.quantity 2
     f.size "medium"
-    f.product_id {Faker::Number.between(1, 30)}
+    f.product_id 4
     f.active "true"
-    f.name {Faker::Lorem.sentence}
-    f.price {Faker::Commerce.price}
+    f.name "Black Shirt"
+    f.price 14.99
   end
 end

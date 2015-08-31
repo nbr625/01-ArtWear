@@ -1,12 +1,12 @@
-require 'faker'
+
 
 FactoryGirl.define do
-  factory :review do |f|
-    f.rating {Faker::Number.between(1, 5)}
-    f.comment {Faker::Lorem.paragraph}
-    f.user_id {Faker::Number.between(1, 30)}
-    f.product_id {Faker::Number.between(1, 30)}
-    f.print_id {Faker::Number.between(1, 30)}
-    f.flag_count {Faker::Number.between(0, 10)}
+  factory :review do
+    rating 4
+    comment "Phenomenal"
+    user_id 3
+    print_id 3
+    flag_count 0
+    pledge_count 0
   end
 end
