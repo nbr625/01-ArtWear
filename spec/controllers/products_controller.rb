@@ -46,23 +46,23 @@ describe ProductsController do
 		context "with attributes within parameters" do
 			it "saves the product in the database" do
 				expect{
-					post :create, product: FactoryGirl.build.attributes_for(:product)
+					post :create, product: build.attributes_for(:product)
 				}.to change(Product,:count).by(1)
 			end
 			it "redirect to the Product index template" do
-				post :create, product: FactoryGirl.build.attributes_for(:product)
-				response.should redirect_to Product.last
+				post :create, product: build.attributes_for(:product)
+				response.should redirect_to last
 			end
 		end
 
 		context "with invalid attributes" do
 			it "does not save the new product to the database" do
 				expect{
-					post :create, product: FactoryGirl.build.attributes_for(:invalid_product)
+					post :create, product: build.attributes_for(:invalid_product)
 				}.to_not change(Product, :product)
 			end
 			it "re-renders the :new template" do
-				post :create, product: FactoryGirl.build.attributes_for(:invalid_product)
+				post :create, product: build.attributes_for(:invalid_product)
 				response.should render_template :new
 			end
 		end
@@ -75,7 +75,7 @@ describe ProductsController do
 
 		context "valid attributes" do
 			it "located the requested @product" do
-				put :update, id: @product, product: FactoryGirl.build.attributes_for(:product)
+				put :update, id: @product, product: build.attributes_for(:product)
 				assigns(:product).should eq(@product)
 			end
 
@@ -85,7 +85,7 @@ describe ProductsController do
 			end
 
 			it "redirect to the updated product" do
-				put :update, id: @product, product: FactoryGirl.build.attributes_for(:product)
+				put :update, id: @product, product: build.attributes_for(:product)
 				response.should redirect_to @product
 			end
 
@@ -94,21 +94,21 @@ describe ProductsController do
 		context "invalid attributes" do
 
 			it "located the appropiarte @product" do
-				put :update, id: @product, product: FactoryGirl.build.attributes_for(:invalid_product)
+				put :update, id: @product, product: build.attributes_for(:invalid_product)
 				assigns(:product).should eq(@product)
 			end
 
 			it "does not change @product's attributes" do
 
 				put :update, id: @product,
-					product: FactoryGirl.build.attributes_for(:product, name: "Masterpiece", creator: nil)
+					product: build.attributes_for(:product, name: "Masterpiece", creator: nil)
 				@product.reload
 				@product.name.should_not eq("Masterpiece")
 				@product.creator.should_not eq("Kight Kolas")
 			end
 
 			it "re-renders the edit method" do
-				put :update, id: @product, product: FactoryGirl.build.attributes_for(:invalid_product)
+				put :update, id: @product, product: build.attributes_for(:invalid_product)
 				response.should render_template :edit
 			end
 
@@ -119,7 +119,7 @@ describe ProductsController do
 	describe 'Delete destroy' do
 
 		before :each do
-			@product = FactoryGirl.build(:product)
+			@product = Fbuild(:product)
 		end
 
 		it "deletes the products" do

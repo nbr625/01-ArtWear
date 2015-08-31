@@ -16,13 +16,13 @@ describe PrintsController, type: :controller do
 
 	describe "GET #show" do
 		it "funnels the right print to the @print variable" do
-			print = FactoryGirl.build(:print)
+			print = build(:print)
 			get :show, id: print
 			assigns(:print).should eq(print)
 		end
 
 		it "renders the :show template" do
-			get :show, id: FactoryGirl.build(:print)
+			get :show, id: build(:print)
 			response.should render_template :show
 		end
 		it "should redirect to root if the user is not signed in" do
@@ -33,7 +33,7 @@ describe PrintsController, type: :controller do
 
 	describe "GET #new" do
 		it "renders the :new template" do
-			get :new, id: FactoryGirl.build(:print)
+			get :new, id: build(:print)
 			response.should render_template :new
 		end
 		it "should redirect to root if the user is not signed in" do
@@ -52,11 +52,11 @@ describe PrintsController, type: :controller do
 		context "with attributes within parameters" do
 			it "saves the print in the database" do
 				expect{
-					post :create, print: FactoryGirl.build.attributes_for(:print)
+					post :create, print: build.attributes_for(:print)
 				}.to change(Print,:count).by(1)
 			end
 			it "redirect to the Print index template" do
-				post :create, print: FactoryGirl.build.attributes_for(:print)
+				post :create, print: build.attributes_for(:print)
 				response.should redirect_to Print.last
 			end
 
@@ -65,11 +65,11 @@ describe PrintsController, type: :controller do
 		context "with invalid attributes" do
 			it "does not save the new print to the database" do
 				expect{
-					post :create, print: FactoryGirl.build.attributes_for(:invalid_print)
+					post :create, print: build.attributes_for(:invalid_print)
 				}.to_not change(Print, :print)
 			end
 			it "re-renders the :new template" do
-				post :create, print: FactoryGirl.build.attributes_for(:invalid_print)
+				post :create, print: build.attributes_for(:invalid_print)
 				response.should render_template :new
 			end
 		end
@@ -78,25 +78,25 @@ describe PrintsController, type: :controller do
 	describe "PUT #update" do
 
 		before :each do
-			@print = FactoryGirl.build(:print, name: "Magnus Opus", description: "My pride and joy.")
+			@print = build(:print, name: "Magnus Opus", description: "My pride and joy.")
 		end
 
 		context "valid attributes" do
 			it "located the requested @print" do
-				put :update, id: @print, print: FactoryGirl.build.attributes_for(:print)
+				put :update, id: @print, print: build.attributes_for(:print)
 				assigns(:print).should eq(@print)
 			end
 
 			it "changes @print's attributes" do
 				put :update, id: @print,
-					print: FactoryGirl.build.attributes_for(:print, name: "Materpiece", description: "Wonderful.")
+					print: build.attributes_for(:print, name: "Materpiece", description: "Wonderful.")
 				@print.reload
 				@print.name.should eq("Masterpiece")
 				@print.description eq("Wonderful.")
 			end
 
 			it "redirect to the updated print" do
-				put :update, id: @print, print: FactoryGirl.build.attributes_for(:print)
+				put :update, id: @print, print: build.attributes_for(:print)
 				response.should redirect_to @print
 			end
 
@@ -105,21 +105,21 @@ describe PrintsController, type: :controller do
 		context "invalid attributes" do
 
 			it "located the appropiarte @print" do
-				put :update, id: @print, print: FactoryGirl.build.attributes_for(:invalid_print)
+				put :update, id: @print, print: build.attributes_for(:invalid_print)
 				assigns(:print).should eq(@print)
 			end
 
 			it "does not change @print's attributes" do
 
 				put :update, id: @print,
-					print: FactoryGirl.build.attributes_for(:print, name: "Magnus Opus", description: nil)
+					print: build.attributes_for(:print, name: "Magnus Opus", description: nil)
 				@print.reload
 				@print.name.should_not eq("Magnus Opus")
 				@print.description.should_not eq("My pride and joy.")
 			end
 
 			it "re-renders the edit method" do
-				put :update, id: @print, print: FactoryGirl.build.attributes_for(:invalid_print)
+				put :update, id: @print, print: build.attributes_for(:invalid_print)
 				response.should render_template :edit
 			end
 		end		
@@ -128,7 +128,7 @@ describe PrintsController, type: :controller do
 	describe 'Delete destroy' do
 
 		before :each do
-			@print = FactoryGirl.build(:print)
+			@print = build(:print)
 		end
 
 
