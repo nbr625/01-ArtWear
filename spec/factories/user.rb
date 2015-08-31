@@ -2,11 +2,10 @@ require 'faker'
 
 FactoryGirl.define do
   factory :user do |f|
-    f.email {Faker::Internet.email}
+    f.email "person@gmail.com"
     f.admin true
-    f.avatar {Faker::Avatar.image}
     f.username "The Greatest"
-    f.biography {Faker::Lorem.paragraph}
+    f.biography "Gretest person ever"
     f.password "password"
   end
 end

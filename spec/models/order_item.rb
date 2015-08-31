@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OrderItem do
 	it "has a valid FactoryGirl" do
-    FactoryGirl.build(:order_item).should be_valid
+    FactoryGirl.create(:order_item).should be_valid
   end
 
   it "is invalid without a unit_price" do

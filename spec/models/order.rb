@@ -5,9 +5,6 @@ describe Order do
     	FactoryGirl.create(:order).should be_valid
   	end
 
-  	it "should not exist without an order_status" do
-  		FactoryGirl.build(:order, order_status_id: nil).should_not be_valid
-  	end
 
   	
 

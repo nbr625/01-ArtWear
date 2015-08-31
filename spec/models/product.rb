@@ -14,13 +14,6 @@ describe Product do
   	it "is invalid without an creator" do
   		FactoryGirl.build(:product, creator: nil).should_not be_valid
   	end
-  	
-
-  	it "should not allow duplicate names per product" do
-  		product = FactoryGirl(:product)
-  		FactoryGirl(:name, product: product, name: "Masterpiece")
-  		FactoryGirl.build(:name, product: product, name: "Masterpiece").should_not be_valid
-  	end
 
 	
 end
