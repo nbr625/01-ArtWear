@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rails_helper'
 
 describe PledgesController do
 	describe "GET #new" do
@@ -38,6 +39,5 @@ describe PledgesController do
 		end
 	end
 
-	
 
 end

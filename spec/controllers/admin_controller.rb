@@ -1,10 +1,12 @@
 require 'spec_helper'
+require 'rails_helper'
 
 describe AdminController do
 	describe "GET #main" do
 
 		it "renders the main view if user is admin" do
-			user = FactoryGirl.create(:user)
+			@user = User.new
+			@user.admin = true
 			get :main
 			response.should render_template :main
 		end

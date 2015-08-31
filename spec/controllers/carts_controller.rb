@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rails_helper'
 
 describe CartsController, type: :controller do
 	context "GET #show" do

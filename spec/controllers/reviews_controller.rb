@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rails_helper'
 
 describe ReviewsController do
 	it "should redirect to root if the user is not signed in" do

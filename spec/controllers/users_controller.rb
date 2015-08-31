@@ -1,9 +1,10 @@
 require 'spec_helper'
+require 'rails_helper'
 
-describe UsersController do
+describe UsersController, type: :controller do
 	describe "GET #index" do
 		it "iterates all then users into an array" do
-			user = FactoryGirl.build(:user)
+			user = User.create
 			get :index
 			assigns(:users).should eq([user])
 		end
@@ -15,13 +16,13 @@ describe UsersController do
 	end
 
 	describe "GET #show" do
-		it "it funnels the right user to the @user variable"
+		it "it funnels the right user to the @user variable" do 
 			user = FactoryGirl.build(:user)
 			get :show, id: user
 			assigns(:user).should eq(user)
 		end
 
-		it "renders the :show template" 
+		it "renders the :show template" do
 			get :show, id: FactoryGirl.build(:user)
 			response.should render_template :show
 		end

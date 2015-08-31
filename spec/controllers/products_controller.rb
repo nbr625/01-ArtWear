@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rails_helper'
 
 describe ProductsController do
 	describe "GET #index" do
