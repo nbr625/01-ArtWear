@@ -1,8 +1,9 @@
 require 'spec_helper'
+require 'rails_helper'
 
 describe Order do
 	it "has a valid FactoryGirl" do
-    	FactoryGirl.create(:order).should be_valid
+    	create(:order).should be_valid
   	end
 
 
