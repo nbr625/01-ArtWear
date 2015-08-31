@@ -79,11 +79,8 @@ describe OrderItemsController do
 
 	describe 'Delete destroy' do
 
-		before :each do
-			@order_item = build(:order_item)
-		end
-
 		it "deletes the order_items" do
+			@order_item = create(:order_item)
 			expect{
 				delete :destroy, id: @order_item
 			}.to change(Order_items, :count).by(-1)

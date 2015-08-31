@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe Review	do
 	it "has a valid FactoryGirl" do
-    	create(:review).should be_valid
+    	build(:review).should be_valid
   	end
 
   	it "is invalid without an comment" do

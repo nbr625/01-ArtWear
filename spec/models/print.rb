@@ -3,7 +3,11 @@ require 'rails_helper'
 
 describe Print do
 
-	it "is invalid without an name" do
+  it "has a valid FactoryGirl" do
+    build(:print).should be_valid
+  end
+
+  it "is invalid without an name" do
   	build(:print, name: nil).should_not be_valid
   end
   it "is invalid without an description" do
