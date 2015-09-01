@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'rails_helper'
+require 'database_cleaner'
 
 describe ProductsController do
 	describe "GET #index" do
@@ -23,19 +24,23 @@ describe ProductsController do
 		end
 
 		it "renders the :show template if user signed in" do
-			product = build(:product)
+
+    		user = create(:user)
+    		sign_in user
+			product = create(:product, id: 24)
 			get :show, id: product.id
 			response.should render_template :show
+
 		end
 	end
 
 	describe "GET #new" do
 		it "should redirect to root if the user is not admin" do
-			user = build(:user, admin: false)
+			current_user = build(:user)
 			response.should redirect_to(root_url)
 		end
 		it "renders the :new template if user is admin" do
-			user = build(user, admin: true)
+			current_user = build(:admin)
 			get :new, id: build(:product)
 			response.should render_template :new
 		end
@@ -46,24 +51,24 @@ describe ProductsController do
 		context "with attributes within parameters" do
 			it "saves the product in the database" do
 				expect{
-					post :create, product: build.attributes_for(:product)
-				}.to change(Product,:count).by(1)
+					post :create, product: attributes_for(:product)
+				}.to change{Product.count}.by(1)
 			end
 			it "redirect to the Product index template" do
-				post :create, product: build.attributes_for(:product)
-				response.should redirect_to last
+				post :create, product: attributes_for(:product)
+				expect(response).to redirect_to Product.last
 			end
 		end
 
 		context "with invalid attributes" do
 			it "does not save the new product to the database" do
 				expect{
-					post :create, product: build.attributes_for(:invalid_product)
-				}.to_not change(Product, :product)
+					post :create, product: attributes_for(:product, name: nil)
+				}.not_to change{Product.count}.by(1)
 			end
 			it "re-renders the :new template" do
-				post :create, product: build.attributes_for(:invalid_product)
-				response.should render_template :new
+				post :create, product: attributes_for(:product, name: nil)
+				expect(response).to redirect_to :new
 			end
 		end
 	end

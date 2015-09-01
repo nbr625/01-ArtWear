@@ -74,6 +74,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'database_cleaner', '~> 1.4.1'
   gem 'as-duration', '~> 0.1.0'
   gem 'rspec-rails', '~> 3.3.3'
   gem 'faker', '~> 1.5.0'

@@ -1,9 +1,10 @@
-
+require 'database_cleaner'
+require 'faker'
 
 FactoryGirl.define do
   factory :review do
     rating {Faker::Number.between(1, 10)}
     comment {Faker::Lorem.paragraph}
-    
+
   end
 end

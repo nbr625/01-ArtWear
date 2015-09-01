@@ -1,5 +1,5 @@
 require 'faker'
-
+require 'database_cleaner'
 FactoryGirl.define do
   factory :product do |f|
     f.name {Faker::Book.title}
