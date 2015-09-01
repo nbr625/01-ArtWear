@@ -11,7 +11,6 @@ class Print < ActiveRecord::Base
 
 	validates :name,  presence: true, uniqueness: true
 	validates :description,  presence: true
-	validates :product,  presence: true
 
 
 	def average_review

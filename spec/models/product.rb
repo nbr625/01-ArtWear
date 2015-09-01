@@ -15,6 +15,13 @@ describe Product do
 	it "is invalid without an creator" do
 		build(:product, creator: nil).should_not be_valid
 	end
+	it "is invalid with a duplicate name" do
+
+    	product = create(:product)
+    	build(:product, name: product.name).should_not be_valid
+
+ 	end
+
 
 	
 end

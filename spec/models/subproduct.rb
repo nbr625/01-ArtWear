@@ -2,8 +2,8 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe Subproduct do
-  it "has a valid FactoryGirl" do
-  	build(:subproduct).should be_valid
+  	it "has a valid FactoryGirl" do
+  		build(:subproduct).should be_valid
 	end	
 
 	

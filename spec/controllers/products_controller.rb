@@ -29,7 +29,7 @@ describe ProductsController do
     		sign_in user
 			product = create(:product, id: 24)
 			get :show, id: product.id
-			response.should render_template :show
+			response.should render_template(:show)
 
 		end
 	end

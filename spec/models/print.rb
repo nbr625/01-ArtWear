@@ -13,10 +13,10 @@ describe Print do
   it "is invalid without an description" do
   	build(:print, description: nil).should_not be_valid
   end
+  it "is invalid with a duplicate name" do
 
-	it "should not exist without an user" do
-  	build(:print, user_id: nil).should_not be_valid
+    print = create(:print)
+    build(:print, name: print.name).should_not be_valid
+
   end
-
-
 end
