@@ -6,6 +6,7 @@ describe PledgesController do
 
 		it "renders the new view if user signed in" do
 			sign_in create(:user)
+			
 			get :new
 			response.should render_template :new
 		end

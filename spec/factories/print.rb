@@ -7,4 +7,12 @@ FactoryGirl.define do
     f.description {Faker::Name.name}
 
   end
+
+  factory :invalid_print do |f|
+    f.name nil
+    f.description nil
+
+  end
+
+  
 end

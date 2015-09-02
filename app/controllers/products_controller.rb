@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: :index
+  before_action :authenticate_admin, only: [:new, :create, :update]
 
   
   def index
@@ -67,5 +68,11 @@ class ProductsController < ApplicationController
 
     def product_params
       params.require(:product).permit(:name, :description, :image, :subproduct, :user_id, :print_id, :creator, :on_sale)
+    end
+
+    def authenticate_admin
+      unless current_user.admin?
+        redirect_to root_path
+      end
     end
 end
