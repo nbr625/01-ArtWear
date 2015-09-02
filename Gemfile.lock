@@ -249,11 +249,14 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (2.6.1)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.8.0)
+    mocha (1.1.0)
+      metaclass (~> 0.0.1)
     multi_json (1.11.2)
     nenv (0.2.0)
     net-scp (1.2.1)
@@ -408,6 +411,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy (~> 2.4.3)
+  mocha (~> 1.1.0)
   paperclip (~> 4.3.0)
   pg
   rails (= 4.2.0)

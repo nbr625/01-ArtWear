@@ -1,5 +1,5 @@
 require 'faker'
-require 'rails_helper'
+
 FactoryGirl.define do
   factory :order_item do |f|
 

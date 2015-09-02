@@ -17,6 +17,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require "capybara/rspec"
+
 require 'factory_girl_rails'
 require File.expand_path("../../config/environment", __FILE__)
 RSpec.configure do |config|
@@ -33,6 +34,7 @@ RSpec.configure do |config|
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+  config.include Capybara::DSL
 
 
 

@@ -60,6 +60,7 @@ group :development do
 end
 
 group :development, :test do
+
   gem 'rspec-rails', '~> 3.3.3'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'shoulda-matchers'
@@ -74,6 +75,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'mocha', '~> 1.1.0'
   gem 'database_cleaner', '~> 1.4.1'
   gem 'as-duration', '~> 0.1.0'
   gem 'rspec-rails', '~> 3.3.3'

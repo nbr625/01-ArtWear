@@ -4,7 +4,8 @@ require 'rails_helper'
 describe PledgesController do
 	describe "GET #new" do
 
-		it "renders the new view" do
+		it "renders the new view if user signed in" do
+			sign_in create(:user)
 			get :new
 			response.should render_template :new
 		end
