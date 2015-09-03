@@ -32,19 +32,22 @@ describe PledgesController do
 				}.to change(Pledge, :count).by(1)
 			end
 			it "redirect to the pledge index template" do
-				post :create, pledge: attributes_for(:pledge, print_id: @print.id, user_id: @user.id)
+				@pledge_attributes = attributes_for(:pledge, print_id: @print.id)
+				post :create, print_id: @print.id, pledge: @pledge_attributes
 				response.should redirect_to print_path(@print)
 			end
 		end
 
 		context "with invalid attributes" do
-			it "does not save the new pledge to the database" do
+			it "to not save the pledge in the database" do
 				expect{
-					post :create, pledge: attributes_for(:pledge, print_id: @print.id, agreement: nil)
+					@pledge_attributes = attributes_for(:pledge, print_id: @print.id, agreement: nil)
+					post :create, print_id: @print.id, pledge: @pledge_attributes
 				}.to_not change(Pledge, :count)
 			end
-			it "re-renders the :new template" do
-				post :create, pledge: build.attributes_for(:pledge, print_id: @print.id, agreement: nil)
+			it "redirect to the pledge index template" do
+				@pledge_attributes = attributes_for(:pledge, print_id: @print.id, agreement: nil)
+				post :create, print_id: @print.id, pledge: @pledge_attributes
 				response.should render_template :new
 			end
 		end
