@@ -9,7 +9,7 @@ class PledgesController < ApplicationController
 
 
   def create
-    @pledge = @print.pledge_params.create(pledge_params)
+    @pledge = current_user.pledges.build(pledge_params)
     @pledge.user_id = current_user.id
     @pledge.print_id = @print.id
 
@@ -34,7 +34,7 @@ class PledgesController < ApplicationController
 
 
     def pledge_params
-      params.require(:pledge).permit(:agree, :user_id, :print_id)
+      params.require(:pledge).permit(:agreement, :user_id, :print_id)
     end
 end
 
