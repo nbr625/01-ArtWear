@@ -9,7 +9,7 @@ class PledgesController < ApplicationController
 
 
   def create
-    @pledge = current_user.pledges.build(pledge_params)
+    @pledge = @print.pledge_params.create(pledge_params)
     @pledge.user_id = current_user.id
     @pledge.print_id = @print.id
 
