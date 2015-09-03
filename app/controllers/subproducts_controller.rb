@@ -25,7 +25,7 @@ class SubproductsController < ApplicationController
   def update
     respond_to do |format|
       if @subproduct.update(subproduct_params)
-        format.html { redirect_to @subproduct, notice: 'Subproduct was successfully updated.' }
+        format.html { redirect_to product_path(@product), notice: 'Subproduct was successfully updated.' }
         format.json { render :show, status: :ok, location: @subproduct }
       else
         format.html { render :edit }
@@ -37,7 +37,7 @@ class SubproductsController < ApplicationController
   def destroy
     @subproduct.destroy
     respond_to do |format|
-      format.html { redirect_to subproducts_url, notice: 'Subproduct was successfully destroyed.' }
+      format.html { redirect_to product_path(@product), notice: 'Subproduct was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -10,10 +10,12 @@ describe PledgesController do
 			visit new_print_pledge_path(@print)
 			response.should be_success
 		end
+
+
 	end
 
 	describe "POST #create" do
-		
+
 		before(:each)do
 			sign_in create(:user)
 			@print = create(:print)

@@ -1,27 +1,29 @@
 require 'spec_helper'
 require 'rails_helper'
 
-describe SubproductsController, type: :c do
+describe SubproductsController do
+
 	describe "POST #create" do
+		before(:each) do
+			sign_in create(:user)
+			@product = create(:product)
+
+		end
 
 
 		context "with attributes within parameters" do
 			it "saves the subproduct in the database" do
 				expect{
-					post :create, subproduct: build.attributes_for(:subproduct)
-				}.to change(Subproduct).length.by(1)
+					post :create, product_id: @product.id, subproduct: attributes_for(:subproduct, product_id: @product.id)
+				}.to change(Subproduct, :count).by(1)
 			end
 		end
 
 		context "with invalid attributes" do
 			it "does not save the new subproduct to the database" do
 				expect{
-					post :create, subproduct: build.attributes_for(:invalid_subproduct)
-				}.to_not change(Subproduct, :subproduct)
-			end
-			it "re-renders the :new template" do
-				post :create, subproduct: build.attributes_for(:invalid_subproduct)
-				response.should render_template :new
+					post :create, product_id: @product.id, subproduct: attributes_for(:subproduct, size: nil, product_id: @product.id)
+				}.to_not change(Subproduct, :count)
 			end
 		end
 	end
@@ -29,18 +31,26 @@ describe SubproductsController, type: :c do
 
 	describe "PUT #update" do
 		before :each do
-			@subproduct = build(:subproduct, size: "medium", price: 14.99)
+			sign_in create(:user)
+			@product = create(:product)
+			@subproduct = create(:subproduct, product_id: @product.id)
+			
 		end
+
 
 		context "valid attributes" do
 			it "located the requested @subproduct" do
-				put :update, id: @subproduct, subproduct: build.attributes_for(:subproduct)
+				put :update, product_id: @product.id, id: @subproduct.id, subproduct: attributes_for(:subproduct, product_id: @product.id)
 				assigns(:subproduct).should eq(@subproduct)
 			end
 
 			it "changes @subproduct's attributes" do
-				put :update, id: @subproduct,
-					subproduct: build.attributes_for(:subproduct, size: "medium", price: 14.99)
+				put :update, product_id: @product.id, id: @subproduct.id,
+					subproduct: attributes_for(:subproduct, product_id: @product.id, size: "medium", price: 19.99)
+				@subproduct.reload
+				@subproduct.size.should eq("medium")
+				@subproduct.price.should eq(19.99)
+
 			end
 
 		end
@@ -48,13 +58,13 @@ describe SubproductsController, type: :c do
 		context "invalid attributes" do
 
 			it "located the appropiarte @subproduct" do
-				put :update, id: @subproduct, subproduct: build.attributes_for(:invalid_subproduct)
+				put :update, product_id: @product.id, id: @subproduct.id, subproduct: attributes_for(:subproduct, product_id: @product.id, size: "medium", price: nil)
 				assigns(:subproduct).should eq(@subproduct)
 			end
 
 			it "does not change @subproduct's attributes" do
 
-				put :update, id: @subproduct, subproduct: build.attributes_for(:subproduct, size: "medium", price: nil)
+				put :update, product_id: @product.id, id: @subproduct.id, subproduct: attributes_for(:subproduct, product_id: @product.id, size: "medium", price: nil)
 				@subproduct.reload
 				@subproduct.size.should_not eq("medium")
 				@subproduct.price.should_not eq("14.99")
@@ -65,12 +75,16 @@ describe SubproductsController, type: :c do
 	end
 
 	describe 'Delete #destroy' do
-
-		@subproduct = build(:subproduct)
+		before :each do
+			sign_in create(:user)
+			@product = create(:product)
+			@subproduct = create(:subproduct, product_id: @product.id)
+			
+		end
 		context "valid delete" do
 			it "deletes the subproducts" do
 				expect{
-					delete :destroy, id: @subproduct
+					delete :destroy, product_id: @product.id, id: @subproduct.id
 				}.to change(Subproduct, :count).by(-1)
 			end
 		end
