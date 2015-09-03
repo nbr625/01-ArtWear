@@ -67,9 +67,7 @@ describe SubproductsController, type: :c do
 	describe 'Delete #destroy' do
 
 		@subproduct = build(:subproduct)
-
 		context "valid delete" do
-
 			it "deletes the subproducts" do
 				expect{
 					delete :destroy, id: @subproduct

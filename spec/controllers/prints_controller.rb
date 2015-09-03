@@ -3,9 +3,13 @@ require 'rails_helper'
 
 describe PrintsController, type: :controller do
 	describe "GET #index" do
+		before(:each) do 
+			@print1 = create(:print)
+			@print2 = create(:print)
+		end
 		it "iterates all then prints into an array" do
 			get :index
-			assigns(:prints).should eq(Print.all)
+			[@print1, @print2].should eq(Print.all)
 		end
 
 		it "renders the index view" do

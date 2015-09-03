@@ -2,58 +2,65 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe ReviewsController do
-	it "should redirect to root if the user is not signed in" do
-		current_user = nil
-		response.should redirect_to(root_url)
-	end
+	
 	describe "GET #index" do
+		before(:each) do
+			sign_in create(:user)
+			@print = create(:print)
+			@review = create(:review, print_id: @print.id)
+		end
 		it "iterates all then reviews into an array" do
-			get :index
-			assigns(:reviews).should eq(Review.all)
+
+			visit print_reviews_path(@print)
+			[@review].should eq(@print.reviews)
 		end
 
 		it "renders the index view if user signed in" do
-			current_user = build(:user)
-			get :index
-			response.should render_template :index
+			visit print_reviews_path(@print)
+			response.should be_success
 		end
 	end
 
 
 	describe "GET #new" do
-		it "should redirect to root if the user is not signed in" do
-			current_user = nil
-			response.should redirect_to(root_url)
-		end
-		it "renders the :new template if user signed in" do
-			current_user = build(:user)
-			get :new, id: build(:review)
-			response.should render_template :new
+		before(:each) {@print = create(:print)}
+		it "renders the :new template if user signed in" do		
+			sign_in create(:user)
+			visit new_print_review_path(@print)
+			response.should be_success
 		end
 	end
 
 	describe "POST #create" do
+		before(:each) do
+			sign_in create(:user)
+			@print = create(:print)
+
+		end
 
 		context "with attributes within parameters" do
+			before(:each) {@review_attributes = attributes_for(:review, print_id: @print.id)}
+			
 			it "saves the review in the database" do
 				expect{
-					post :create, review: build.attributes_for(:review)
+					post :create, print_id: @print.id, review: @review_attributes
 				}.to change(Review,:count).by(1)
 			end
 			it "redirect to the review index template" do
-				post :create, review: build.attributes_for(:review)
-				response.should redirect_to review.last
+				post :create, print_id: @print.id, review: @review_attributes
+				response.should redirect_to print_path(@print)
 			end
 		end
 
 		context "with invalid attributes" do
+			before(:each) {@invalid_review_attributes = attributes_for(:review, print_id: @print.id, rating: nil)}
 			it "does not save the new review to the database" do
 				expect{
-					post :create, review: build.attributes_for(:invalid_review)
-				}.to_not change(Review, :review)
+					post :create, print_id: @print.id, review: @invalid_review_attributes
+				}.to_not change(Review, :count)
 			end
 			it "re-renders the :new template" do
-				post :create, review: build.attributes_for(:invalid_review)
+				post :create, print_id: @print.id, review: @invalid_review_attributes
 				response.should render_template :new
 			end
 		end
@@ -61,23 +68,29 @@ describe ReviewsController do
 
 	describe "PUT update" do
 		before :each do
-			@review = build(:review, rating: 4, comment: "It's okay")
+			sign_in create(:user)
+			@print = create(:print)
+			@review = create(:review, print_id: @print.id, rating: 4, comment: "It's okay")	
 		end
 
 		context "valid attributes" do
 			it "located the requested @review" do
-				put :update, id: @review, review: build.attributes_for(:review)
+				put :update, print_id: @print.id, id: @review.id, review: attributes_for(:review)
 				assigns(:review).should eq(@review)
 			end
 
 			it "changes @review's attributes" do
-				put :update, id: @review,
-					review: build.attributes_for(:review, rating: 4, comment: "It's okay")
+				put :update, print_id: @print.id, id: @review.id,
+					review: attributes_for(:review, rating: 5, comment: "amazing!!!")
+				@review.reload
+				@review.rating.should eq(5)
+				@review.comment.should eq("amazing!!!")
+
 			end
 
 			it "redirect to the updated review" do
-				put :update, id: @review, review: build.attributes_for(:review)
-				response.should redirect_to @print
+				put :update, print_id: @print.id, id: @review.id, review: attributes_for(:review)
+				response.should redirect_to print_path(@print)
 			end
 
 		end
@@ -85,21 +98,21 @@ describe ReviewsController do
 		context "invalid attributes" do
 
 			it "located the appropiarte @review" do
-				put :update, id: @review, review: build.attributes_for(:invalid_review)
+				put :update, print_id: @print.id, id: @review.id, review: attributes_for(:review, print_id: @print.id, rating: 5, comment: nil)
 				assigns(:review).should eq(@review)
 			end
 
 			it "does not change @review's attributes" do
 
-				put :update, id: @review,
-					review: build.attributes_for(:review, rating: 4, comment: nil)
+				put :update, print_id: @print.id, id: @review.id,
+					review: attributes_for(:review, print_id: @print.id, rating: 5, comment: nil)
 				@review.reload
-				@review.rating.should_not eq(4)
-				@review.comment.should_not eq("It's okay")
+				@review.rating.should eq(4)
+				@review.comment.should eq("It's okay")
 			end
 
 			it "re-renders the edit method" do
-				put :update, id: @review, review: build.attributes_for(:invalid_review)
+				put :update, print_id: @print.id, id: @review.id, review: attributes_for(:review, print_id: @print.id, rating: 5, comment: nil)
 				response.should render_template :edit
 			end
 
@@ -110,18 +123,21 @@ describe ReviewsController do
 	describe 'Delete destroy' do
 
 		before :each do
-			@review = build(:review)
+			sign_in create(:user)
+			@print = create(:print)
+			@review = create(:review, print_id: @print.id)
+			
 		end
 
 		it "deletes the reviews" do
 			expect{
-				delete :destroy, id: @review
+				delete :destroy, print_id: @print.id, id: @review.id
 			}.to change(Review, :count).by(-1)
 		end
 
 		it "redirects to reviews#index" do
-			delete :destroy, id: @review
-			response.should redirect_to @review
+			delete :destroy, print_id: @print.id, id: @review.id
+			response.should redirect_to print_path(@print)
 		end
 	end
 

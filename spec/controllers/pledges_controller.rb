@@ -4,21 +4,16 @@ require 'rails_helper'
 describe PledgesController do
 	describe "GET #new" do
 
-
-
 		it "renders the new view if user signed in" do
-			@user = create(:user)
-			sign_in @user
+			sign_in create(:user)
 			@print = create(:print)
 			visit new_print_pledge_path(@print)
 			response.should be_success
 		end
-
-
 	end
 
 	describe "POST #create" do
-
+		
 		before(:each)do
 			sign_in create(:user)
 			@print = create(:print)
