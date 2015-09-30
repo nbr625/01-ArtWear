@@ -1,12 +1,15 @@
 require 'spec_helper'
 require 'rails_helper'
-require 'database_cleaner'
 
 describe ProductsController do
+	before(:each) do 
+		@product1 = create(:product)
+		@product2 = create(:product)
+	end
 	describe "GET #index" do
 		it "iterates all then products into an array" do
 			get :index
-			assigns(:products).should eq(Product.all)
+			[@product2, @product2].should eq(Product.all)
 		end
 
 		it "renders the index view" do

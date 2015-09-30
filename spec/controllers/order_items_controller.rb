@@ -6,29 +6,30 @@ describe OrderItemsController do
 
 	describe "POST #create" do
 
-		it "should redirect to root if the user is not signed in" do
-			current_user = nil
-			response.should redirect_to(root_url)
+		before(:each) do 
+			sign_in	create(:user)
+			@order = create(:order)
+
 		end
 
+
 		context "with attributes within parameters" do
+			before(:each) {@order_item_attributes = attributes_for(:order_item)}
 			it "saves the order_item in the database" do
 				expect{
-					post :create, order_item: build.attributes_for(:order_item)
-				}.to change(Order_items,:count).by(1)
+					post :create, order_item: @order_item_attributes
+				}.to change(Order_item, :count).by(1)
 			end
-			it "redirect to the order_item index template" do
-				post :create, order_item: build.attributes_for(:order_item)
-				response.should redirect_to order_item.last
-			end
+
 
 		end
 
 		context "with invalid attributes" do
 			it "does not save the new order_item to the database" do
+				before(:each) {@invalid_order_item_attributes = attributes_for(:order_item, quantity: nil)}
 				expect{
-					post :create, order_item: build.attributes_for(:invalid_order_item)
-				}.to_not change(Order_items, :order_item)
+					post :create, order_item: @invalid_order_item_attributes
+				}.to_not change(Order_item, :count)
 			end
 		end
 	end
