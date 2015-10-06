@@ -1,4 +1,4 @@
-require 'spec_helper'
+erequire 'spec_helper'
 require 'rails_helper'
 
 describe Review	do

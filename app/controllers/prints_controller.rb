@@ -53,7 +53,7 @@ class PrintsController < ApplicationController
   end
 
   def flag
-    @print.flag_print
+    @print.increment!(:flag_count)
     respond_to do |format|
       if @print.save
         format.html { redirect_to @print, notice: 'Print was successfully flagged.' }

@@ -22,6 +22,8 @@ class Print < ActiveRecord::Base
 		end
 	end
 
+
+
 	def pledge_count
 		if self.pledges.blank?
 			return 0
