@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :rememberable, :trackable, :validatable
 
   # Paperclip avatar picture requirement.
   has_attached_file :avatar, :styles => { :medium => "300x300>", :small => "", :thumb => "100x100>" }, :convert_options => {:small => "-gravity north -thumbnail 200x200^ -extent 200x200"}, :storage => :s3,
