@@ -5,14 +5,14 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <div class="form-field_2">&nbsp;&nbsp;<%= f.label :email %>&nbsp;:&nbsp;&nbsp;</div>
-        <div style="width: 50%; float: left; padding: 5px"><%= f.email_field :email, autofocus: true %></div>
+        <div style="width: 50%; float: left; padding: 5px"><%= f.email_field :email, autofocus: true, id: 'email' %></div>
       </div>
       <br/>
       <br/>
 
       <div class="field">
         <div class='form-field_2'>&nbsp;&nbsp;<%= f.label :password %>&nbsp;:&nbsp;&nbsp;</div>
-        <div style="width: 50%; float: left; padding: 5px"><%= f.password_field :password, autocomplete: "off" %></div>
+        <div style="width: 50%; float: left; padding: 5px"><%= f.password_field :password, autocomplete: "off", id: "password"%></div>
       </div>
       <br/>
       <br/>
@@ -20,7 +20,7 @@
 
       <% if devise_mapping.rememberable? -%>
         <div class="field"
-          <%= f.check_box :remember_me %>
+          <%= f.check_box :remember_me %>  
           <%= f.label :remember_me %>
         </div>
       <% end %>
@@ -29,7 +29,7 @@
 
 
       <div class="actions">
-        <div id="signin" style="text-align: center;"><%= f.submit "Log in", class: "btn btn-danger" %></div>
+        <div id="signin" style="text-align: center;"><%= f.submit "Log in", class: "btn btn-danger", id: 'submit' %></div>
       </div>
     <% end %>
     <br/>
@@ -38,3 +38,6 @@
     <%= render "devise/shared/links" %>
   </div>
 </div>
+
+
+
