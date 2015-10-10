@@ -9,11 +9,11 @@
   <% end %>
   
   <div style="text-align: center;">
-    <%= f.check_box :agreement, label: "I Agree" %>
+    <%= f.check_box :agreement, label: "I Agree", id: 'agreement' %>
   </div>
 
   <br/>
   <div style="text-align: center;">
-    <%= f.submit "Support", class: "btn-lg btn-primary"%>
+    <%= f.submit "Support", class: "btn-lg btn-primary", id: 'submit' %>
   </div>
 <% end %>

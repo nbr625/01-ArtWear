@@ -8,7 +8,7 @@
 
       <div class="field">
         <div class="form-field"><%= f.label :email %>:&nbsp;</div>
-        <div style="float: right; width: 50%; padding: 5px"><%= f.email_field :email, autofocus: true %></div>
+        <div style="float: right; width: 50%; padding: 5px"><%= f.email_field :email, autofocus: true, id: 'email' %></div>
       </div>
       <br/>
       <br/>
@@ -22,20 +22,20 @@
       <div class="field">
         
         <div class="form-field"><%= f.label :new_password %>&nbsp;(optional):&nbsp;</div>
-        <div style="float: right; width: 50%; padding: 5px"><%= f.password_field :new_password, autocomplete: "off" %></div>
+        <div style="float: right; width: 50%; padding: 5px"><%= f.password_field :new_password, autocomplete: "off", id: 'newpassword' %></div>
       </div>
       <br/>
 
       <div class="field">
         <div class="form-field"><%= f.label :new_pw_confirmation %>:&nbsp;</div>
-        <div style="float: right; width: 50%; padding: 5px"><%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+        <div style="float: right; width: 50%; padding: 5px"><%= f.password_field :password_confirmation, autocomplete: "off", id: 'passwordconfirmation' %></div>
       </div>
       <br/>
       <br/>
 
       <div class="field">
         <div class="form-field"><%= f.label :current_password %>:&nbsp;</div>
-        <div style="float: right; width: 50%; padding: 5px"><%= f.password_field :current_password, autocomplete: "off" %></div>
+        <div style="float: right; width: 50%; padding: 5px"><%= f.password_field :current_password, autocomplete: "off", id: 'currentpassword' %></div>
       </div>
       <br/>
       <br/>
@@ -43,14 +43,14 @@
       <div class="field">
         <div class="form-field"><%= f.label :username %>:&nbsp;</div>
 
-        <div style="float: right; width: 50%; padding: 5px"><%= f.text_field :username %></div>
+        <div style="float: right; width: 50%; padding: 5px"><%= f.text_field :username, id: 'username' %></div>
       </div>
       <br/>
       <br/>
 
       <div class="field">
         <div class="form-field"><%= f.label :biography %>:&nbsp;</div>
-        <div style="float: right; width: 50%; padding: 5px"><%= f.text_area :biography %></div>
+        <div style="float: right; width: 50%; padding: 5px"><%= f.text_area :biography, id: 'biography' %></div>
       </div>
       <br/>
       <br/>
@@ -58,14 +58,14 @@
 
       <div class="field">
         <div class="form-field"><%= f.label :avatar %>:&nbsp;</div>
-        <div style="float: right; width: 50%; padding: 5px"><%= f.file_field :avatar %></div>
+        <div style="float: right; width: 50%; padding: 5px"><%= f.file_field :avatar, id: 'avatar' %></div>
       </div>
       <br/>
       <br/>
       <br/>
 
       <div class="actions" style="text-align: center;">
-        <%= f.submit "Update", class: "btn btn-danger" %>
+        <%= f.submit "Update", class: "btn btn-danger", id: 'submit' %>
       </div>
     <% end %>
     <br/>

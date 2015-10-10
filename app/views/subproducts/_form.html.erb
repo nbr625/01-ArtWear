@@ -1,16 +1,16 @@
 <%= form_for ([@product, @product.subproducts.build]) do |f| %>
   <div class="field"><strong>Size</strong></div>
-  <%= f.select(:size, ["Small", "Medium", "Large", "XLarge"], hide_label: true, include_blank: true) %>
+  <%= f.select(:size, ["Small", "Medium", "Large", "XLarge"], hide_label: true, include_blank: true), id: 'size' %>
   <div class="field">
     <%= f.label :quantity %><br>
-    <%= f.text_field :quantity %>
+    <%= f.text_field :quantity, id: 'quantity' %>
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.number_field :price, step: 'any'%>
+    <%= f.number_field :price, step: 'any', id: 'price' %>
   </div>
   <br/><br/>  
   <div class="actions">
-    <%= f.submit "Post Subproduct", class: "btn btn-default"  %>
+    <%= f.submit "Post Subproduct", class: "btn btn-default", id: 'submitsubproduct' %>
   </div>
 <% end %>
