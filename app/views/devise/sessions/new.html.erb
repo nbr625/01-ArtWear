@@ -5,14 +5,14 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <div class="form-field_2">&nbsp;&nbsp;<%= f.label :email %>&nbsp;:&nbsp;&nbsp;</div>
-        <input style="width: 50%; float: left; padding: 5px" autofocus="autofocus" id="email" type="email" value="" name="user[email]">
+        <div style="width: 50%; float: left; padding: 5px" id="email"><input autofocus="autofocus" id="emailfield" type="email" value="" name="user[email]"></div>
       </div>
       <br/>
       <br/>
 
       <div class="field">
         <div class='form-field_2'>&nbsp;&nbsp;<%= f.label :password %>&nbsp;:&nbsp;&nbsp;</div>
-        <input style="width: 50%; float: left; padding: 5px" autocomplete="off" id="password" type="password" name="user[password]">
+        <div style="width: 50%; float: left; padding: 5px" id="password"><input autocomplete="off" id="passwordfield" type="password" name="user[password]"></div>
       </div>
       <br/>
       <br/>
