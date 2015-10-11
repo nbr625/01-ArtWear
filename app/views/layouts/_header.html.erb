@@ -16,7 +16,7 @@
           <li id="signin" class="navbar_li"><%= link_to "Sign in", new_user_session_path, class: "btn btn-warning", id: "signinpage"%></li>
         <% end %>
         <% if user_signed_in? %>
-          <li id="logout"><%= link_to "Logout", destroy_user_session_path, method: "delete", class: "btn btn-default", id: "logoutpath" %></li>
+          <li id="logout"><a href="/users/sign_out" data-method="delete" rel="nofollow" class="btn btn-default" id="logoutpath">Logout</a></li>
         <% end %>
       </ul>
     </div>
