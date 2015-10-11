@@ -16,7 +16,6 @@
 //= require skrollr
 //= require angular
 //= require angular-resource
-//= require turbolinks
 //= require_tree .
 
 /**
