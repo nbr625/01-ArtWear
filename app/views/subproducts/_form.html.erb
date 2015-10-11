@@ -1,6 +1,6 @@
 <%= form_for ([@product, @product.subproducts.build]) do |f| %>
   <div class="field"><strong>Size</strong></div>
-  <%= f.select(:size, ["Small", "Medium", "Large", "XLarge"], hide_label: true, include_blank: true), id: 'size' %>
+  <%= f.select(:size, ["Small", "Medium", "Large", "XLarge"], hide_label: true, include_blank: true)%>
   <div class="field">
     <%= f.label :quantity %><br>
     <%= f.text_field :quantity, id: 'quantity' %>
