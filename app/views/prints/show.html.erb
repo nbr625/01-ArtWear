@@ -5,11 +5,11 @@
         <td>
           <%= link_to 'Back', prints_path, class: "btn btn-default" %>
           <% if current_user.admin? %>
-            <%= link_to "Turn into Product", turn_into_product_print_path(@print), method: :put, class: "btn btn-success" %>
+            <%= link_to "Turn into Product", turn_into_product_print_path(@print), method: :put, class: "btn btn-success", id: "turnintoproductpath" %>
           <% end %>
           <% if current_user.admin? || current_user == @print.user %>
-            <%= link_to "Edit Print", edit_print_path(@print), class: "btn btn-default" %>
-            <%= link_to 'Erase It', @print, method: :delete, class: "btn btn-danger" %>
+            <%= link_to "Edit Print", edit_print_path(@print), class: "btn btn-default", id: "editprintpath" %>
+            <%= link_to 'Erase It', @print, method: :delete, class: "btn btn-danger", id: "eraseprintpath" %>
           <% end %>
         </td>
       </tr>
@@ -34,15 +34,15 @@
           
               <%= image_tag('pledge.png' , width: 70, height: 70) + "#{@print.pledges.length}"%>
             <td/>
-            <td><%= link_to "Flag #{@print.flag_count}", flag_print_path(@print), method: :put, class: "btn btn-default"%></td>
+            <td><%= link_to "Flag #{@print.flag_count}", flag_print_path(@print), method: :put, class: "btn btn-default", id: "flagpath" %></td>
           </tr>
         </table>
       </div>
 
       <br/>
 
-      <%= link_to "Review", new_print_review_path(@print), class: "btn btn-default" %>
-      <%= link_to "Pledge", new_print_pledge_path(@print), class: "btn btn-danger"%>
+      <%= link_to "Review", new_print_review_path(@print), class: "btn btn-default", id: "reviewpath" %>
+      <%= link_to "Pledge", new_print_pledge_path(@print), class: "btn btn-danger", id: "pledgepath" %>
       <br/><br/>
  
       <div class="row" style="padding: 0px 0px 0px 10pxpx;">
@@ -90,7 +90,7 @@
         </table>
         <br/>
         <div style="text-align:center;">
-          <%= link_to "All Reviews", print_reviews_path(@print), class: "btn btn-default"%>
+          <%= link_to "All Reviews", print_reviews_path(@print), class: "btn btn-default", id: "allreviews" %>
         </div>
       </div>
     </div>
