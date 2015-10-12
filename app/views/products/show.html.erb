@@ -4,7 +4,9 @@
     <%= link_to 'Back', products_path, class: "btn btn-default" %>
     <% if current_user.admin? %>
       <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-success"%>
+      <%= link_to 'Erase It', @product, method: :delete, class: "btn btn-danger", id: "eraseproductpath" %>
     <% end %>
+
     <br/>
 
     <div class="product_image" style="text-align: center;"><%= image_tag @product.image.url(:large) %></div>
