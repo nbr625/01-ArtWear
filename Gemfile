@@ -35,11 +35,9 @@ gem 'responders', '~> 2.0'
 gem 'carrierwave'
 gem 'foreman', '~> 0.78.0'
 
+
 #for autotesting feature
-gem 'ZenTest', '~> 4.11.0'
-gem 'autotest-rails', '~> 4.2.1'
-gem 'autotest-fsevent', '~> 0.2.10'
-gem 'autotest-growl', '~> 0.2.16'
+
 
 
 # Use ActiveModel has_secure_password
@@ -82,7 +80,6 @@ group :test do
   gem 'rspec-rails', '~> 3.3.3'
   gem 'faker', '~> 1.5.0'
   gem 'capybara', '~> 2.5.0'
-  gem 'guard-rspec', '~> 4.6.4'
   gem 'launchy', '~> 2.4.3'
 end
 
